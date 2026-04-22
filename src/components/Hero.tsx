@@ -6,7 +6,6 @@ export function Hero({ isLight }: { isLight: boolean }) {
   const { scrollY } = useScroll();
   
   // Parallax effects
-  const parallaxY = useTransform(scrollY, [0, 1000], [0, 300]);
   const textParallaxY = useTransform(scrollY, [0, 1000], [0, 150]);
 
   useEffect(() => {

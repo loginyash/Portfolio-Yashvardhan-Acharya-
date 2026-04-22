@@ -35,7 +35,6 @@ function App() {
   useEffect(() => {
     // Advanced Asset Preloading
     const assets = ['/spiderman_light.png', '/venom_dark.png', '/about_miles.png'];
-    let loadedCount = 0;
 
     const minimumDelay = new Promise(resolve => setTimeout(resolve, 2200));
     
