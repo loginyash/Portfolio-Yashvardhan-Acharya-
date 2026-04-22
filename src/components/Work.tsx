@@ -3,7 +3,16 @@ import { CinematicHeader } from './CinematicHeader';
 import { TiltCard } from './TiltCard';
 import { ArrowRight } from 'lucide-react';
 
-const projects = [
+interface Project {
+  title: string;
+  tag: string;
+  description: string;
+  link: string;
+  image?: string;
+  useIframe?: boolean;
+}
+
+const projects: Project[] = [
   {
     title: "CodeSage — AI Learning Platform",
     tag: "UX Design · AI · EdTech",
