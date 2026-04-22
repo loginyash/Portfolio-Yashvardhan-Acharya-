@@ -9,11 +9,11 @@ export default {
       colors: {
         background: "var(--background)",
         surface: "var(--surface)",
-        crimson: "var(--crimson)",
-        cobalt: "var(--cobalt)",
+        crimson: "rgb(var(--crimson) / <alpha-value>)",
+        cobalt: "rgb(var(--cobalt) / <alpha-value>)",
         text: {
-          primary: "var(--text-primary)",
-          secondary: "var(--text-secondary)",
+          primary: "rgb(var(--text-primary) / <alpha-value>)",
+          secondary: "rgb(var(--text-secondary) / <alpha-value>)",
         }
       },
       fontFamily: {
