@@ -9,7 +9,7 @@ const projects = [
     tag: "UX Design · AI · EdTech",
     description: "End-to-end learning experience for AI-driven coding practice — built around cognitive load reduction, gamification, and intuitive user flows.",
     link: "https://code-sage-minor-project.vercel.app/",
-    useIframe: true
+    image: "/codesage_thumb.png"
   },
   {
     title: "ProjectIn — Case Study",
