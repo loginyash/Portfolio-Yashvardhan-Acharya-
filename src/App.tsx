@@ -132,10 +132,14 @@ function App() {
             }}
             style={{ 
               y: i % 2 === 0 ? bgY1 : bgY2,
+              borderColor: 'rgb(var(--crimson) / 0.1)'
             }}
-            className="absolute w-12 h-12 border border-crimson/10 rounded-full flex items-center justify-center -z-10"
+            className="absolute w-12 h-12 border rounded-full flex items-center justify-center -z-10"
           >
-            <div className="w-[1px] h-full bg-crimson/5 rotate-45" />
+            <div 
+              style={{ backgroundColor: 'rgb(var(--crimson) / 0.05)' }} 
+              className="w-[1px] h-full rotate-45" 
+            />
           </motion.div>
         ))}
       </div>

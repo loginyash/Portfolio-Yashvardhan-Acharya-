@@ -22,7 +22,8 @@
 
 @layer base {
   ::selection {
-    @apply bg-crimson/30 text-text-primary;
+    background-color: rgb(var(--crimson) / 0.3);
+    color: rgb(var(--text-primary) / 1);
   }
 
   /* Custom Scrollbar */

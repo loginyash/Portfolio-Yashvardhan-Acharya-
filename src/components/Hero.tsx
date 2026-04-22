@@ -107,8 +107,8 @@ export function Hero({ isLight }: { isLight: boolean }) {
             >
               ACHARYA
               
-              <div className="absolute -bottom-2 md:-bottom-4 left-0 w-full h-[1px] md:h-[2px] bg-crimson/30 overflow-hidden">
-                <div className="w-full h-full bg-crimson -translate-x-full group-hover:translate-x-0 transition-transform duration-[0.4s] ease-[cubic-bezier(0.22,1,0.36,1)]" />
+              <div style={{ backgroundColor: 'rgb(var(--crimson) / 0.3)' }} className="absolute -bottom-2 md:-bottom-4 left-0 w-full h-[1px] md:h-[2px] overflow-hidden">
+                <div style={{ backgroundColor: 'rgb(var(--crimson) / 1)' }} className="w-full h-full -translate-x-full group-hover:translate-x-0 transition-transform duration-[0.4s] ease-[cubic-bezier(0.22,1,0.36,1)]" />
               </div>
             </span>
           </motion.h1>
