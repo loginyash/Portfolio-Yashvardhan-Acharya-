@@ -9,10 +9,7 @@ export default {
       colors: {
         background: "var(--background)",
         surface: "var(--surface)",
-        crimson: {
-          DEFAULT: "var(--crimson)",
-          hover: "#A00018",
-        },
+        crimson: "var(--crimson)",
         cobalt: "var(--cobalt)",
         text: {
           primary: "var(--text-primary)",
