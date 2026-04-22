@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yashvardhan Acharya | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Epilogue:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#ac8885",
+                        "tertiary": "#c9c6c5",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "secondary": "#bbc3ff",
+                        "background": "#0A0A0A",
+                        "on-primary": "#68000b",
+                        "surface-container": "#1e2020",
+                        "surface-variant": "#333535",
+                        "primary": "#ffb3ae",
+                        "tertiary-fixed-dim": "#c9c6c5",
+                        "on-background": "#e2e2e2",
+                        "primary-fixed-dim": "#ffb3ae",
+                        "tertiary-container": "#5f5e5e",
+                        "on-secondary-fixed-variant": "#0029d1",
+                        "on-primary-fixed-variant": "#930013",
+                        "surface-container-high": "#282a2b",
+                        "surface-bright": "#38393a",
+                        "surface-container-lowest": "#0c0f0f",
+                        "on-surface-variant": "#e6bdb9",
+                        "on-tertiary": "#313030",
+                        "secondary-container": "#0032f7",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#dbd8d7",
+                        "on-primary-fixed": "#410004",
+                        "on-secondary": "#001b96",
+                        "primary-container": "#c0001d",
+                        "surface-tint": "#ffb3ae",
+                        "surface-dim": "#121414",
+                        "surface": "#121414",
+                        "secondary-fixed": "#dfe0ff",
+                        "on-primary-container": "#ffcdc9",
+                        "primary-fixed": "#ffdad7",
+                        "secondary-fixed-dim": "#bbc3ff",
+                        "on-secondary-container": "#bfc6ff",
+                        "surface-container-low": "#1a1c1c",
+                        "inverse-primary": "#c0001d",
+                        "surface-container-highest": "#333535",
+                        "inverse-surface": "#e2e2e2",
+                        "on-secondary-fixed": "#000d5f",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-error": "#690005",
+                        "inverse-on-surface": "#2f3131",
+                        "outline-variant": "#5c3f3d",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e2e2e2",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "error": "#ffb4ab",
+                        "crimson": "#C0001D",
+                        "cobalt": "#1A3FFF"
+                    },
+                    "fontFamily": {
+                        "subheader": ["spaceGrotesk"],
+                        "display-xl": ["Anton"],
+                        "ui-label": ["spaceGrotesk"],
+                        "body-sm": ["inter"],
+                        "body-main": ["inter"],
+                        "headline-lg": ["Anton"],
+                        "epilogue": ["Epilogue"]
+                    },
+                    "fontSize": {
+                        "subheader": ["24px", {"lineHeight": "32px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-xl": ["120px", {"lineHeight": "110px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "ui-label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-main": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "0.01em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .halftone-bg {
+            background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .web-grid {
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 100px 100px;
+        }
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+            color: transparent;
+        }
+        .glass-card {
+            background: rgba(17, 17, 17, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hex-frame {
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        }
+
+        /* Glitch Animation */
+        .glitch-load {
+            animation: glitch-anim 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            position: relative;
+        }
+        .glitch-load::before, .glitch-load::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0A0A0A;
+        }
+        .glitch-load::before {
+            left: 2px;
+            text-shadow: -2px 0 #C0001D;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim-2 0.4s infinite linear alternate-reverse;
+            z-index: -1;
+            opacity: 0;
+        }
+        .glitch-load::after {
+            left: -2px;
+            text-shadow: -2px 0 #1A3FFF;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 0.4s infinite linear alternate-reverse;
+            z-index: -2;
+            opacity: 0;
+        }
+        .glitch-active::before, .glitch-active::after {
+            opacity: 1;
+        }
+        
+        @keyframes glitch-anim {
+            0% { clip: rect(78px, 9999px, 86px, 0); transform: translate(2px) skew(2deg); }
+            20% { clip: rect(10px, 9999px, 87px, 0); transform: translate(-2px) skew(-2deg); }
+            40% { clip: rect(45px, 9999px, 5px, 0); transform: translate(2px) skew(2deg); }
+            60% { clip: rect(98px, 9999px, 34px, 0); transform: translate(-2px) skew(-2deg); }
+            80% { clip: rect(23px, 9999px, 78px, 0); transform: translate(2px) skew(2deg); }
+            100% { clip: rect(67px, 9999px, 12px, 0); transform: translate(0) skew(0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(14px, 9999px, 93px, 0); transform: translate(-2px) skew(-2deg); }
+            20% { clip: rect(65px, 9999px, 21px, 0); transform: translate(2px) skew(2deg); }
+            40% { clip: rect(87px, 9999px, 54px, 0); transform: translate(-2px) skew(-2deg); }
+            60% { clip: rect(32px, 9999px, 89px, 0); transform: translate(2px) skew(2deg); }
+            80% { clip: rect(12px, 9999px, 45px, 0); transform: translate(-2px) skew(-2deg); }
+            100% { clip: rect(76px, 9999px, 34px, 0); transform: translate(0) skew(0); }
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-main selection:bg-crimson selection:text-white">
+<!-- TopNavBar Shared Component -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-4 lg:px-16 bg-black/80 backdrop-blur-xl border-b border-white/10">
+<div class="text-2xl font-black text-white tracking-tighter border border-white/20 px-2 py-1 font-epilogue">YA</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="font-epilogue tracking-tighter uppercase font-bold text-sm text-[#C0001D] border-b-2 border-[#C0001D] pb-1" href="#work">Work</a>
+<a class="font-epilogue tracking-tighter uppercase font-bold text-sm text-neutral-400 hover:text-white transition-colors duration-300" href="#about">About</a>
+<a class="font-epilogue tracking-tighter uppercase font-bold text-sm text-neutral-400 hover:text-white transition-colors duration-300" href="#process">Process</a>
+<a class="font-epilogue tracking-tighter uppercase font-bold text-sm text-neutral-400 hover:text-white transition-colors duration-300" href="#contact">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-4 py-1.5 border border-white/10 rounded-full bg-white/5 scale-95 active:scale-90 transition-transform cursor-pointer group">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-crimson opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-crimson"></span>
+</span>
+<span class="font-ui-label uppercase text-[10px] text-white">Open to Work</span>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen w-full flex flex-col justify-center px-margin pt-24 overflow-hidden">
+<div class="absolute inset-0 halftone-bg opacity-5 pointer-events-none"></div>
+<div class="absolute inset-0 web-grid opacity-10 pointer-events-none"></div>
+<div class="max-w-container-max mx-auto w-full relative z-10">
+<p class="font-ui-label text-tertiary mb-4 tracking-[0.4em] uppercase reveal">Hello, I'm</p>
+<h1 class="font-display-xl text-[100px] md:text-[140px] leading-none text-white tracking-tighter flex flex-col glitch-load reveal" data-text="YASHVARDHAN ACHARYA" id="hero-title">
+<span>YASHVARDHAN</span>
+<span class="relative inline-block pb-2">
+                    ACHARYA
+                    <div class="absolute bottom-[-2px] left-0 w-full h-[2px] bg-crimson shadow-[0_0_20px_rgba(192,0,29,0.45)]"></div>
+</span>
+</h1>
+<div class="mt-12 flex flex-col md:flex-row md:items-end justify-between gap-8 reveal">
+<div>
+<h2 class="font-subheader text-crimson mb-2">UI/UX Designer · Product Thinker</h2>
+<p class="font-body-main text-tertiary italic max-w-md">"Crafting interfaces that feel like superpowers."</p>
+</div>
+<div class="flex flex-col items-end gap-2 text-right">
+<span class="font-body-sm text-tertiary/40">25.1972° N, 73.3149° E</span>
+<div class="w-12 h-12 flex items-center justify-center border border-white/10 rounded-full animate-bounce">
+<span class="material-symbols-outlined text-white">arrow_downward</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- About Section -->
+<section class="py-40 px-margin bg-[#0A0A0A] relative overflow-hidden" id="about">
+<div class="absolute inset-0 halftone-bg opacity-5 pointer-events-none"></div>
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 items-center reveal">
+<div class="md:col-span-7 space-y-12">
+<div>
+<span class="font-ui-label text-crimson uppercase tracking-widest mb-4 block">01 / Profile</span>
+<h2 class="font-headline-lg text-white mb-8">Design Meets<br/>Logic</h2>
+<p class="font-body-main text-tertiary max-w-xl leading-relaxed">
+                        Currently an engineering student at GEC Bikaner, I blend systems thinking with high-fidelity visual storytelling. My approach is rooted in the belief that great design is not just how it looks, but how it empowers the user to perform tasks effortlessly.
+                    </p>
+</div>
+<div class="grid grid-cols-3 gap-8">
+<div class="border-l-2 border-crimson pl-6 py-2">
+<span class="font-display-xl text-4xl block text-white">2+</span>
+<span class="font-ui-label text-neutral-500 uppercase">Years Exp.</span>
+</div>
+<div class="border-l-2 border-crimson pl-6 py-2">
+<span class="font-display-xl text-4xl block text-white">3</span>
+<span class="font-ui-label text-neutral-500 uppercase">Key Projects</span>
+</div>
+<div class="border-l-2 border-crimson pl-6 py-2">
+<span class="font-display-xl text-4xl block text-white">1</span>
+<span class="font-ui-label text-neutral-500 uppercase">UX Cert</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-5 relative group">
+<div class="absolute -inset-4 bg-crimson/20 blur-3xl group-hover:bg-crimson/30 transition-all"></div>
+<div class="relative hex-frame w-full aspect-[4/5] bg-neutral-900 border border-white/10 overflow-hidden">
+<img alt="Designer working at desk" class="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-700" data-alt="Cinematic close-up of a designer in a dark studio setting with soft crimson ambient lighting, focused on digital sketches" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGVZ93b5PNKkWS-uP5x-dA-O-wUgDREVHM0ztHBhG5upN2x0BIoPne7qmkKM1c-LPBX_M9An6ZStMsOVytEC8DqAd_AZt41i0OJL3fNJ4jEsB0MoszI911A_EZAbcjA2W82We4kaI9UOLhGQoUBZpUkehBd3MrNqPhVgaI3-zJgGTBpLnmfMXJ3XTUAJRZ7FnXVydCBRgviKxmv7Gkq4MCD2IvyICOEpQ9fkr8k2Wl9BFpO51aU4LD6-FaBr_EAqJGebdrghcxiSw"/>
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md px-6 py-3 border border-white/20 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-crimson text-sm" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-ui-label text-white uppercase text-[10px]">Bikaner, Rajasthan</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Work Section -->
+<section class="py-40 px-margin relative" id="work">
+<div class="absolute inset-0 halftone-bg opacity-5 pointer-events-none"></div>
+<div class="absolute top-0 left-0 w-full h-full web-grid opacity-5 pointer-events-none"></div>
+<div class="text-outline font-display-xl text-[12vw] leading-none absolute top-20 left-0 w-full text-center z-0 pointer-events-none uppercase">PORTFOLIO</div>
+<div class="max-w-container-max mx-auto relative z-10 reveal">
+<div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-4">
+<div>
+<h2 class="font-headline-lg text-white">Selected Work</h2>
+<p class="font-subheader text-neutral-500">Things I've Built (2022—2024)</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- CodeSage Card -->
+<div class="group relative bg-[#111111] border border-white/10 p-6 flex flex-col gap-6 hover:border-crimson/50 transition-all duration-500 overflow-hidden reveal" style="transition-delay: 80ms;">
+<div class="absolute -right-12 -top-12 w-32 h-32 bg-crimson/5 blur-3xl group-hover:bg-crimson/20 transition-all"></div>
+<div class="aspect-[16/10] bg-gradient-to-br from-[#0d1117] to-[#0a0f1e] overflow-hidden border border-white/5 relative">
+<svg class="absolute inset-0 w-full h-full text-cobalt/10" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0,50 L20,50 L30,20 L50,80 L70,30 L80,50 L100,50" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+<circle cx="20" cy="50" fill="currentColor" r="1"></circle>
+<circle cx="80" cy="50" fill="currentColor" r="1"></circle>
+</svg>
+<img alt="AI Platform Interface" class="w-full h-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 mix-blend-overlay" data-alt="Minimalist dark UI dashboard for an AI code assistant featuring sleek code blocks and data visualizations in cobalt and white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl0yzA0H5Tn37wZHnb0-_RLQSJG5Ja5fjCQt_IT-4aFeq03hlD8aQAAdfLVs_PXvYec4WANKpaJxVl6KTbXACZk87NT8X3FRaVuvSAuKB-WRBo-GRsm0X8RGkOTAY4rR4ptr09-OBXSlYjrXtqdEjSUkzNo5ph20zAk-hsmWQ4avB7uVYlv8B1fcZwF-dX8RwpUZjNulhgRiCSDnzRgBqHQxcdZdsgTjJfJYeLyaPfF-vDiOKnTcbsqWiByU50eK8QDMR_jUwUe8k"/>
+</div>
+<div class="space-y-2">
+<span class="font-ui-label text-cobalt uppercase">AI &amp; DEV TOOL</span>
+<h3 class="font-subheader text-white group-hover:text-crimson transition-colors">CodeSage</h3>
+<p class="font-body-sm text-neutral-400">Streamlining collaborative programming through AI-driven context mapping.</p>
+</div>
+<div class="pt-4 border-t border-white/5 flex justify-between items-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all">
+<span class="font-ui-label text-white">View Project</span>
+<span class="material-symbols-outlined text-crimson">arrow_forward</span>
+</div>
+</div>
+<!-- Ink & Impact Card -->
+<div class="group relative bg-[#111111] border border-white/10 p-6 flex flex-col gap-6 hover:border-crimson/50 transition-all duration-500 overflow-hidden reveal" style="transition-delay: 160ms;">
+<div class="absolute -right-12 -top-12 w-32 h-32 bg-cobalt/5 blur-3xl group-hover:bg-cobalt/20 transition-all"></div>
+<div class="aspect-[16/10] bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] overflow-hidden border border-white/5 relative flex items-center justify-center">
+<span class="font-display-xl text-white/5 absolute text-[120px] select-none">I&amp;I</span>
+<img alt="Notes Application" class="w-full h-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 mix-blend-overlay z-10" data-alt="Editorial style layout of a digital note taking application with elegant typography and clean white space against a charcoal background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQxpy8mKTWs_hkZABZIGiP37yBhu93kIx18Jeug0uXehqkg40lYULyN1f1lKa0phOLTx_CoJN7OZindQfB5sUdL3gPCInDl6djqXvwpB-wxHN6w8XO1imbfxAbtS2hHkA4EQkx0B-luAHnEBy3shvkvShNhLw0DQLz66K4L7wmPDlTgG72ytDIJwKuGBkCiVfmkpS7PvT1FPBezlsveZD7__ajmV_4pIMgLnutvwDAq2ce2g8SB4U0iEMXsvy-3GuZUGy0-Yuw-Hw"/>
+</div>
+<div class="space-y-2">
+<span class="font-ui-label text-cobalt uppercase">PRODUCTIVITY</span>
+<h3 class="font-subheader text-white group-hover:text-crimson transition-colors">Ink &amp; Impact</h3>
+<p class="font-body-sm text-neutral-400">A minimal note-taking experience designed for architectural precision.</p>
+</div>
+<div class="pt-4 border-t border-white/5 flex justify-between items-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all">
+<span class="font-ui-label text-white">View Project</span>
+<span class="material-symbols-outlined text-crimson">arrow_forward</span>
+</div>
+</div>
+<!-- Sampark App Card -->
+<div class="group relative bg-[#111111] border border-white/10 p-6 flex flex-col gap-6 hover:border-crimson/50 transition-all duration-500 overflow-hidden reveal" style="transition-delay: 240ms;">
+<div class="absolute -right-12 -top-12 w-32 h-32 bg-crimson/5 blur-3xl group-hover:bg-crimson/20 transition-all"></div>
+<div class="aspect-[16/10] bg-gradient-to-br from-[#0a0a14] to-[#100e1e] overflow-hidden border border-white/5 relative flex items-center justify-center">
+<svg class="absolute w-1/3 h-2/3 text-white/5" fill="none" stroke="currentColor" stroke-width="0.5" viewbox="0 0 24 48">
+<rect height="44" rx="3" width="20" x="2" y="2"></rect>
+<line x1="10" x2="14" y1="5" y2="5"></line>
+</svg>
+<img alt="Social Networking App" class="w-full h-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 mix-blend-overlay z-10" data-alt="Mobile app screens showing a social connection platform with vibrant profile cards and smooth navigation interfaces" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzwOL9sAf7RdIVhkL1fAmnZInVGEPgUI2ht43PjK5ib4a5Ar_MDHYkRnBp46AYtKBSDJWtirGZNjWVNjELJ-MhsdnFinbXsbZPcmoOWcjyiw0OzVKeb3tHEdLCCxUm1Uc7zqLzbj-eCKnX2pc3vaYN_RUonNb0KsDUEIc9YQcgI7LRB_t4bhI7kFO-AeubrEfMj0ZJaX038mtgMTtDXbjP5rZxSnolcO7FqQR84tEUYMcGX_5j-olKBdUe2UGISL1THaapi7xeWm8"/>
+</div>
+<div class="space-y-2">
+<span class="font-ui-label text-cobalt uppercase">SOCIAL SYSTEM</span>
+<h3 class="font-subheader text-white group-hover:text-crimson transition-colors">Sampark App</h3>
+<p class="font-body-sm text-neutral-400">Connecting local communities through verified trust layers and low-friction UX.</p>
+</div>
+<div class="pt-4 border-t border-white/5 flex justify-between items-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all">
+<span class="font-ui-label text-white">View Project</span>
+<span class="material-symbols-outlined text-crimson">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="py-40 px-margin relative bg-[#0D0D0D]">
+<div class="absolute inset-0 halftone-bg opacity-5 pointer-events-none"></div>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03]">
+<span class="font-display-xl text-[20vw] leading-none text-white whitespace-nowrap">TOOLKIT</span>
+</div>
+<div class="max-w-container-max mx-auto relative z-10 reveal">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+<div>
+<h2 class="font-headline-lg text-white mb-12">Expertise</h2>
+<div class="flex flex-wrap gap-4">
+<span class="px-6 py-3 border border-white/20 rounded-full font-ui-label text-white uppercase hover:bg-crimson hover:border-crimson transition-all cursor-default reveal" style="transition-delay: 40ms;">Figma</span>
+<span class="px-6 py-3 border border-white/20 rounded-full font-ui-label text-white uppercase hover:bg-crimson hover:border-crimson transition-all cursor-default reveal" style="transition-delay: 80ms;">Wireframing</span>
+<span class="px-6 py-3 border border-white/20 rounded-full font-ui-label text-white uppercase hover:bg-crimson hover:border-crimson transition-all cursor-default reveal" style="transition-delay: 120ms;">Prototyping</span>
+<span class="px-6 py-3 border border-white/20 rounded-full font-ui-label text-white uppercase hover:bg-crimson hover:border-crimson transition-all cursor-default reveal" style="transition-delay: 160ms;">User Research</span>
+<span class="px-6 py-3 border border-white/20 rounded-full font-ui-label text-white uppercase hover:bg-crimson hover:border-crimson transition-all cursor-default reveal" style="transition-delay: 200ms;">Visual Design</span>
+<span class="px-6 py-3 border border-white/20 rounded-full font-ui-label text-white uppercase hover:bg-crimson hover:border-crimson transition-all cursor-default reveal" style="transition-delay: 240ms;">Design Systems</span>
+</div>
+</div>
+<div>
+<h2 class="font-headline-lg text-white mb-12">Credentials</h2>
+<div class="space-y-6">
+<div class="flex items-center gap-6 p-6 border border-white/5 bg-white/5 group hover:border-crimson/50 transition-all reveal" style="transition-delay: 80ms;">
+<div class="w-16 h-16 bg-neutral-800 flex items-center justify-center border border-white/10 group-hover:bg-crimson transition-colors">
+<span class="material-symbols-outlined text-white text-3xl">workspace_premium</span>
+</div>
+<div>
+<h4 class="font-subheader text-white text-lg">Google UX Professional</h4>
+<p class="font-body-sm text-neutral-500">Professional Certificate, March 2026</p>
+</div>
+</div>
+<div class="flex items-center gap-6 p-6 border border-white/5 bg-white/5 group hover:border-crimson/50 transition-all reveal" style="transition-delay: 160ms;">
+<div class="w-16 h-16 bg-neutral-800 flex items-center justify-center border border-white/10 group-hover:bg-crimson transition-colors">
+<span class="material-symbols-outlined text-white text-3xl">verified</span>
+</div>
+<div>
+<h4 class="font-subheader text-white text-lg">Deloitte Technology Job Simulation</h4>
+<p class="font-body-sm text-neutral-500">Forage Credential, July 2025</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Process Section -->
+<section class="py-40 px-margin relative" id="process">
+<div class="absolute inset-0 halftone-bg opacity-5 pointer-events-none"></div>
+<div class="max-w-container-max mx-auto reveal">
+<h2 class="font-headline-lg text-white mb-24">The Formula</h2>
+<div class="relative">
+<div class="absolute top-8 left-0 w-full h-[1px] bg-white/10">
+<div class="absolute top-0 left-0 w-full h-[1px] bg-crimson"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="relative pt-20 group">
+<div class="absolute top-6 left-0 w-[10px] h-[10px] bg-crimson rounded-full border border-crimson group-hover:scale-150 transition-transform"></div>
+<span class="font-display-xl text-crimson opacity-10 absolute -top-8 left-0 -z-10 text-[80px]">01</span>
+<h4 class="font-subheader text-white mb-4">Discover</h4>
+<p class="font-body-sm text-neutral-400">Diving into user pain points and market gaps to find the "Why".</p>
+</div>
+<div class="relative pt-20 group">
+<div class="absolute top-6 left-0 w-[10px] h-[10px] bg-[#0A0A0A] rounded-full border border-white/20 group-hover:bg-crimson group-hover:border-crimson transition-all group-hover:scale-150"></div>
+<span class="font-display-xl text-crimson opacity-10 absolute -top-8 left-0 -z-10 text-[80px]">02</span>
+<h4 class="font-subheader text-white mb-4">Define</h4>
+<p class="font-body-sm text-neutral-400">Architecting information systems and user flows with surgical precision.</p>
+</div>
+<div class="relative pt-20 group">
+<div class="absolute top-6 left-0 w-[10px] h-[10px] bg-[#0A0A0A] rounded-full border border-white/20 group-hover:bg-crimson group-hover:border-crimson transition-all group-hover:scale-150"></div>
+<span class="font-display-xl text-crimson opacity-10 absolute -top-8 left-0 -z-10 text-[80px]">03</span>
+<h4 class="font-subheader text-white mb-4">Design</h4>
+<p class="font-body-sm text-neutral-400">Translating wireframes into high-fidelity, expressive visual interfaces.</p>
+</div>
+<div class="relative pt-20 group">
+<div class="absolute top-6 left-0 w-[10px] h-[10px] bg-[#0A0A0A] rounded-full border border-white/20 group-hover:bg-crimson group-hover:border-crimson transition-all group-hover:scale-150"></div>
+<span class="font-display-xl text-crimson opacity-10 absolute -top-8 left-0 -z-10 text-[80px]">04</span>
+<h4 class="font-subheader text-white mb-4">Deliver</h4>
+<p class="font-body-sm text-neutral-400">Iterating based on feedback and shipping pixel-perfect assets.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-40 px-margin relative bg-[#0A0A0A] border-t border-white/5" id="contact">
+<div class="absolute inset-0 halftone-bg opacity-5 pointer-events-none"></div>
+<div class="max-w-container-max mx-auto text-center reveal">
+<h2 class="font-display-xl text-6xl md:text-[120px] text-white leading-tight mb-12">LET'S BUILD<br/>SOMETHING.</h2>
+<p class="font-body-main text-neutral-500 max-w-xl mx-auto mb-16 text-xl">
+                Ready to transform your product vision into a high-precision digital reality? I'm currently looking for new opportunities.
+            </p>
+<div class="flex flex-col items-center gap-4 mb-24">
+<div class="flex flex-col md:flex-row justify-center items-center gap-8">
+<a class="px-12 py-5 bg-crimson text-white font-ui-label uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all shadow-[0_10px_40px_rgba(192,0,29,0.3)]" href="mailto:yashacharya2099@gmail.com">Email Me</a>
+<a class="px-12 py-5 border border-white/20 text-white font-ui-label uppercase tracking-widest hover:bg-white/5 transition-all" href="#">View LinkedIn</a>
+</div>
+<span class="text-[#666666] text-[12px] font-body-sm mt-2">yashacharya2099@gmail.com</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-white/10 pt-16">
+<div class="flex flex-col gap-2">
+<span class="font-ui-label text-neutral-600 uppercase">LOCATION</span>
+<span class="font-subheader text-white">Bikaner, Rajasthan, IN</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-ui-label text-neutral-600 uppercase">AVAILABILITY</span>
+<span class="font-subheader text-white">Full-time / Freelance</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-ui-label text-neutral-600 uppercase">PHONE</span>
+<span class="font-subheader text-white">+91-99282 83468</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Shared Component -->
+<footer class="bg-[#0A0A0A] border-t border-white/10 py-12">
+<div class="max-w-[1440px] mx-auto px-16 flex flex-col md:flex-row justify-between items-center gap-8">
+<p class="font-epilogue text-[10px] tracking-widest uppercase text-neutral-500">© 2026 Yashvardhan Acharya — Designed with intention.</p>
+<div class="flex gap-12">
+<a class="font-epilogue text-[10px] tracking-widest uppercase text-neutral-500 hover:text-[#C0001D] transition-colors" href="#">LinkedIn</a>
+<a class="font-epilogue text-[10px] tracking-widest uppercase text-neutral-500 hover:text-[#C0001D] transition-colors" href="#">Dribbble</a>
+<a class="font-epilogue text-[10px] tracking-widest uppercase text-neutral-500 hover:text-[#C0001D] transition-colors" href="#">Behance</a>
+<a class="font-epilogue text-[10px] tracking-widest uppercase text-neutral-500 hover:text-[#C0001D] transition-colors" href="#">Email</a>
+</div>
+</div>
+</footer>
+<!-- Decorative Corner Labels -->
+<div class="fixed bottom-8 left-8 z-40 hidden lg:block">
+<span class="font-body-sm text-neutral-700 uppercase tracking-tighter origin-left -rotate-90 block">Design_Terminal_v2.0</span>
+</div>
+<div class="fixed top-24 right-8 z-40 hidden lg:block">
+<span class="font-body-sm text-neutral-700 uppercase tracking-tighter origin-right rotate-90 block">Timestamp: 2024.Q4</span>
+</div>
+<script>
+    // Glitch Animation Trigger
+    document.addEventListener("DOMContentLoaded", () => {
+        const title = document.getElementById("hero-title");
+        if(title) {
+            title.classList.add("glitch-active");
+            setTimeout(() => {
+                title.classList.remove("glitch-load", "glitch-active");
+            }, 400);
+        }
+
+        // Intersection Observer for Scroll Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    });
+</script>
+</body></html>
