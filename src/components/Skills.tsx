@@ -16,108 +16,91 @@ const certifications = [
   "Data Analytics Job Simulation — Deloitte/Forage, July 2025"
 ];
 
-export function Skills({ isLight }: { isLight?: boolean }) {
+export function Skills() {
   return (
-    <section id="skills" className="py-32 md:py-48 px-6 md:px-12 relative overflow-hidden flex flex-col items-center justify-center border-t border-transparent">
+    <section id="skills" className="py-28 md:py-40 px-6 md:px-12 relative overflow-hidden">
       <div className="max-w-[1440px] w-full mx-auto relative z-10">
         
         <CinematicHeader 
           title="My Toolkit." 
           subtitle="CORE COMPETENCIES" 
-          isLight={isLight}
+          staggered
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
           
           {/* Design Skills */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.175, 0.885, 0.32, 1.275] }}
-          >
-            <span 
-              style={{ color: isLight ? '#3D4A5E' : '#A3A3A3' }}
-              className="font-subheading text-[11px] uppercase tracking-[0.2em] mb-8 block hover:-translate-y-1 transition-transform"
+          <div className="flex flex-col">
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="font-subheading text-[11px] uppercase tracking-[0.2em] mb-8 block text-[#A3A3A3]"
             >
               DESIGN LAYER
-            </span>
+            </motion.span>
             <div className="flex flex-wrap gap-3">
               {designSkills.map((skill, i) => (
-                <motion.button 
-                   key={i}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  style={{ 
-                    borderColor: isLight ? '#001B4430' : '#ffffff20',
-                    color: isLight ? '#001B44' : '#F2F2F2'
-                  }}
-                  className="group relative px-5 py-2.5 bg-transparent border font-subheading text-[11px] uppercase tracking-widest overflow-hidden hover:border-crimson hover:text-white transition-all duration-300"
+                <motion.span 
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.04, duration: 0.4 }}
+                  className="group relative px-4 py-2.5 bg-transparent border border-[rgba(255,255,255,0.08)] text-[#F2F2F2] font-subheading text-[11px] uppercase tracking-widest overflow-hidden hover:border-crimson hover:text-white transition-all duration-300 cursor-default"
                 >
                   <span className="relative z-10">{skill}</span>
                   <div className="absolute top-0 left-0 h-full w-full bg-crimson -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] z-0" />
-                </motion.button>
+                </motion.span>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Technical Skills */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.175, 0.885, 0.32, 1.275] }}
-          >
-            <span 
-              style={{ color: isLight ? '#3D4A5E' : '#A3A3A3' }}
-              className="font-subheading text-[11px] uppercase tracking-[0.2em] mb-8 block hover:-translate-y-1 transition-transform"
+          <div className="flex flex-col">
+            <motion.span 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="font-subheading text-[11px] uppercase tracking-[0.2em] mb-8 block text-[#A3A3A3]"
             >
               TECHNICAL LAYER
-            </span>
+            </motion.span>
             <div className="flex flex-wrap gap-3">
               {techSkills.map((skill, i) => (
-                <motion.button 
-                   key={i}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  style={{ 
-                    borderColor: isLight ? '#001B4430' : '#ffffff20',
-                    color: isLight ? '#001B44' : '#F2F2F2'
-                  }}
-                  className="group relative px-5 py-2.5 bg-transparent border font-subheading text-[11px] uppercase tracking-widest overflow-hidden hover:border-cobalt hover:text-white transition-all duration-300"
+                <motion.span 
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.04, duration: 0.4 }}
+                  className="group relative px-4 py-2.5 bg-transparent border border-[rgba(255,255,255,0.08)] text-[#F2F2F2] font-subheading text-[11px] uppercase tracking-widest overflow-hidden hover:border-crimson hover:text-white transition-all duration-300 cursor-default"
                 >
-                  <span className="relative z-10 transition-transform group-hover:animate-rgb-split">{skill}</span>
-                  <div className="absolute top-0 left-0 h-full w-full bg-cobalt/80 -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] z-0" />
-                </motion.button>
+                  <span className="relative z-10">{skill}</span>
+                  <div className="absolute top-0 left-0 h-full w-full bg-crimson -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] z-0" />
+                </motion.span>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Certifications Row */}
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          style={{ borderColor: isLight ? '#001B4415' : '#ffffff10' }}
-          className="mt-24 pt-12 border-t flex flex-col md:flex-row gap-6 md:gap-12"
+          className="mt-20 pt-10 border-t border-[rgba(255,255,255,0.06)] flex flex-col md:flex-row gap-4 md:gap-8"
         >
           {certifications.map((cert, i) => (
             <motion.div 
               key={i}
-              whileHover={{ scale: 1.02 }}
-              style={{ 
-                backgroundColor: isLight ? '#F5F5E9' : '#121212',
-                borderColor: isLight ? '#001B4415' : '#ffffff10'
-              }}
-              className="group flex items-center gap-4 px-6 py-4 border hover:border-crimson/50 transition-all duration-300"
+              whileHover={{ y: -2 }}
+              transition={{ duration: 0.3 }}
+              className="group flex items-center gap-3 px-5 py-3.5 border border-[rgba(255,255,255,0.06)] bg-[rgba(18,18,18,0.5)] hover:border-crimson/30 transition-all duration-300 backdrop-blur-sm"
             >
-              <span className="text-xl group-hover:scale-110 transition-transform duration-300 origin-bottom">🏅</span>
-              <span 
-                style={{ color: isLight ? '#3D4A5E' : '#A3A3A3' }}
-                className="font-subheading text-[12px] tracking-wider uppercase group-hover:text-crimson transition-colors"
-              >
+              <span className="text-base opacity-70 group-hover:opacity-100 transition-opacity">🏅</span>
+              <span className="font-subheading text-[11px] tracking-wider uppercase text-[#A3A3A3] group-hover:text-white transition-colors">
                 {cert}
               </span>
             </motion.div>

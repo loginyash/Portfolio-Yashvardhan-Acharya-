@@ -1,11 +1,10 @@
 import { useEffect, useRef } from 'react';
 
-export function CustomCursor({ isLight }: { isLight?: boolean }) {
+export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
-  const followerRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Disable completely on touch devices and < 768px
     if (
       window.matchMedia("(max-width: 768px)").matches || 
       window.matchMedia("(pointer: coarse)").matches
@@ -14,91 +13,62 @@ export function CustomCursor({ isLight }: { isLight?: boolean }) {
     }
 
     const dot = dotRef.current;
-    const follower = followerRef.current;
-
-    if (!dot || !follower) return;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
-    
-    // Follower Position
-    let followerX = mouseX;
-    let followerY = mouseY;
-    
-    let isHovering = false;
-    let isClicking = false;
+    let ringX = mouseX;
+    let ringY = mouseY;
     let rafId: number;
+    let hovering = false;
 
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      
+
       const target = e.target as HTMLElement;
-      // Identify interactive elements
-      isHovering = 
-        window.getComputedStyle(target).cursor === 'pointer' ||
-        target.tagName.toLowerCase() === 'a' ||
-        target.tagName.toLowerCase() === 'button' ||
-        target.closest('a') !== null ||
-        target.closest('button') !== null;
+      hovering = !!(
+        target.closest('a') || 
+        target.closest('button') || 
+        target.closest('[role="button"]')
+      );
     };
 
-    const onMouseDown = () => { isClicking = true; };
-    const onMouseUp = () => { isClicking = false; };
-
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mousedown', onMouseDown);
-    window.addEventListener('mouseup', onMouseUp);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
 
     const render = () => {
-      // Smooth follow for secondary cursor
-      followerX += (mouseX - followerX) * 0.15;
-      followerY += (mouseY - followerY) * 0.15;
+      ringX += (mouseX - ringX) * 0.1;
+      ringY += (mouseY - ringY) * 0.1;
 
-      // Render Primary Cursor (snaps instantly)
-      dot.style.translate = `${mouseX}px ${mouseY}px`;
-      dot.style.scale = isClicking ? '0.8' : '1';
-      dot.style.opacity = isHovering ? '0.4' : '1';
+      dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+      dot.style.opacity = hovering ? '0' : '1';
 
-      // Render Follower Cursor
-      follower.style.translate = `${followerX}px ${followerY}px`;
-      follower.style.scale = isHovering ? '1.8' : '1';
-      follower.style.opacity = isHovering ? '1' : '0.5';
+      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) scale(${hovering ? 1.8 : 1})`;
+      ring.style.borderColor = hovering ? 'rgb(192, 0, 29)' : 'rgba(255, 255, 255, 0.5)';
 
       rafId = requestAnimationFrame(render);
     };
 
-    render();
+    rafId = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mousedown', onMouseDown);
-      window.removeEventListener('mouseup', onMouseUp);
       cancelAnimationFrame(rafId);
     };
   }, []);
 
   return (
     <>
+      {/* Follower ring */}
       <div 
-        ref={followerRef} 
-        className="fixed top-0 left-0 w-8 h-8 -ml-4 -mt-4 rounded-full border border-crimson/60 opacity-50 bg-transparent pointer-events-none z-[9998] transition-[scale,opacity] duration-120 ease-out hidden md:flex items-center justify-center overflow-hidden" 
-        style={{ willChange: 'translate' }}
-      >
-        <div className="absolute inset-0 opacity-0 transition-opacity duration-300 flex items-center justify-center scale-75">
-           <svg viewBox="0 0 24 24" className="w-full h-full text-crimson" fill="none" stroke="currentColor" strokeWidth="0.5">
-             <path d="M12 2L2 12l10 10 10-10L12 2z" />
-             <path d="M12 2v20M2 12h20" />
-           </svg>
-        </div>
-      </div>
+        ref={ringRef} 
+        className="fixed top-0 left-0 w-8 h-8 -ml-4 -mt-4 rounded-full border-[1.5px] border-white/50 pointer-events-none z-[9998] hidden md:block will-change-transform transition-[border-color] duration-200"
+      />
+      {/* Dot */}
       <div 
         ref={dotRef} 
-        style={{ 
-          willChange: 'translate',
-          backgroundColor: isLight ? '#001B44' : '#F2F2F2'
-        }}
-        className="fixed top-0 left-0 w-[6px] h-[6px] -ml-[3px] -mt-[3px] rounded-full pointer-events-none z-[9999] transition-[scale,opacity,background-color] duration-300 ease-out hidden md:block" 
+        className="fixed top-0 left-0 w-[6px] h-[6px] -ml-[3px] -mt-[3px] rounded-full bg-white pointer-events-none z-[9999] hidden md:block will-change-transform" 
       />
     </>
   );

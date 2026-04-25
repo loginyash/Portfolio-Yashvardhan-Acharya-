@@ -8,16 +8,7 @@
   --text-primary: 242 242 242;
   --text-secondary: 163 163 163;
   --crimson: 192 0 29;
-  --cobalt: 0 71 171;
-}
 
-:root.light {
-  --background: #FFFFF0;
-  --surface: #FDFDF7;
-  --text-primary: 0 27 68;
-  --text-secondary: 61 74 94;
-  --crimson: 175 0 26;
-  --cobalt: 0 55 139;
 }
 
 @layer base {
@@ -26,9 +17,8 @@
     color: rgb(var(--text-primary) / 1);
   }
 
-  /* Custom Scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
 
   ::-webkit-scrollbar-track {
@@ -36,13 +26,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--crimson);
+    background: rgb(var(--crimson) / 0.4);
     border-radius: 10px;
-    opacity: 0.5;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--cobalt);
+    background: rgb(var(--crimson) / 0.6);
   }
 
   html {
@@ -56,21 +45,18 @@
   
   body {
     background-color: var(--background);
-    color: var(--text-primary);
+    color: rgb(var(--text-primary) / 1);
     @apply font-inter antialiased;
-    transition: background-color 0.8s cubic-bezier(0.22, 1, 0.36, 1), color 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  /* Accessible Focus States */
   :focus-visible {
-    outline: 2px solid var(--crimson);
+    outline: 2px solid rgb(var(--crimson));
     outline-offset: 4px;
     border-radius: 4px;
   }
 
-  /* Only disable native cursor natively on desktop point devices */
   @media (pointer: fine) and (min-width: 768px) {
-    body, a, button {
+    *, *::before, *::after {
       cursor: none !important;
     }
   }
@@ -90,59 +76,12 @@
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   }
 
-  .kinetic-glitch::before,
-  .kinetic-glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: inherit;
-    background: transparent;
-    opacity: 0;
-    pointer-events: none;
-    z-index: -1;
-    mix-blend-mode: screen;
-  }
-
-  .light .kinetic-glitch::before,
-  .light .kinetic-glitch::after {
-    mix-blend-mode: multiply;
-    text-shadow: none;
-  }
-
-  .kinetic-glitch::before {
-    left: 2px;
-    text-shadow: -2px 0 var(--crimson);
-    clip-path: inset(45% 0 50% 0);
-  }
-
-  .kinetic-glitch::after {
-    left: -2px;
-    text-shadow: 2px 0 var(--cobalt);
-    clip-path: inset(20% 0 75% 0);
-  }
-
   .comic-grain {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     opacity: 0.05;
     mix-blend-mode: overlay;
+    pointer-events: none;
   }
-}
-
-/* Spider-web Wireframe Background */
-.spider-grid {
-  background-image: 
-    linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px),
-    radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-  background-size: 80px 80px, 80px 80px, 160px 160px;
-}
-
-.halftone-parallax {
-  background-image: radial-gradient(currentColor 10%, transparent 11%);
-  background-size: 14px 14px;
 }
 
 @keyframes sheen {
@@ -153,37 +92,4 @@
 
 .animate-sheen {
   animation: sheen 3.5s infinite ease-in-out;
-}
-
-@keyframes glitch-slow {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 1px); }
-  40% { transform: translate(2px, -1px); }
-  60% { transform: translate(-1px, 2px); }
-  80% { transform: translate(1px, -2px); }
-  100% { transform: translate(0); }
-}
-
-.animate-glitch-slow {
-  animation: glitch-slow 0.4s infinite linear;
-}
-
-@keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
-.animate-scanline {
-  animation: scanline 8s linear infinite;
-}
-
-
-@keyframes pulse-line {
-  0% { opacity: 0.3; }
-  50% { opacity: 0.8; }
-  100% { opacity: 0.3; }
-}
-
-.animate-pulse-line {
-  animation: pulse-line 3s infinite ease-in-out;
 }
