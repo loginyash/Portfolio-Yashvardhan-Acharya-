@@ -1,5 +1,13 @@
+import { personal } from '../config/personal';
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  
+  const socialLinks = [
+    { label: 'GitHub', href: personal.social.github },
+    { label: 'LinkedIn', href: personal.social.linkedin },
+    { label: 'Email', href: `mailto:${personal.contact.email}` }
+  ];
   
   return (
     <footer className="w-full border-t border-[rgba(255,255,255,0.04)] bg-[#0A0A0A] py-8 px-6 md:px-12">
@@ -12,17 +20,13 @@ export function Footer() {
             <polyline points="7.5 17.5 12 13.5 16.5 17.5" />
             <line x1="9.4" y1="16" x2="14.6" y2="16" />
           </svg>
-          <p className="font-subheading text-[11px] uppercase tracking-widest text-[#A3A3A3]">
-            © {currentYear} Yashvardhan Acharya <span className="mx-2">·</span> Designed with intention.
+          <p className="font-subheading text-[11px] uppercase tracking-widest text-[#B8B8B8]">
+            © {currentYear} {personal.fullName} <span className="mx-2">·</span> Designed with intention.
           </p>
         </div>
         
         <div className="flex gap-8">
-          {[
-            { label: 'GitHub', href: 'https://github.com/loginyash' },
-            { label: 'LinkedIn', href: 'https://www.linkedin.com/in/loginyash/' },
-            { label: 'Email', href: 'mailto:yashacharya2099@gmail.com' }
-          ].map((link, i) => (
+          {socialLinks.map((link, i) => (
             <a 
               key={i}
               href={link.href} 

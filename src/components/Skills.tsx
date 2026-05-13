@@ -1,20 +1,6 @@
 import { motion } from 'framer-motion';
 import { CinematicHeader } from './CinematicHeader';
-
-const designSkills = [
-  "Figma", "Wireframing", "High-Fidelity Prototyping", "User Flows", 
-  "Design Systems", "Responsive Design", "User Interviews", "Usability Testing"
-];
-
-const techSkills = [
-  "HTML", "CSS", "Python", "Git", "GitHub", "Product Thinking", 
-  "Cross-functional Collaboration"
-];
-
-const certifications = [
-  "Google UX Design — Coursera, March 2026",
-  "Data Analytics Job Simulation — Deloitte/Forage, July 2025"
-];
+import { designSkills, techSkills, certifications } from '../data/skills';
 
 export function Skills() {
   return (
@@ -29,13 +15,12 @@ export function Skills() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
           
-          {/* Design Skills */}
           <div className="flex flex-col">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="font-subheading text-[11px] uppercase tracking-[0.2em] mb-8 block text-[#A3A3A3]"
+              className="font-subheading text-[11px] uppercase tracking-[0.2em] mb-8 block text-[#B8B8B8]"
             >
               DESIGN LAYER
             </motion.span>
@@ -56,13 +41,12 @@ export function Skills() {
             </div>
           </div>
 
-          {/* Technical Skills */}
           <div className="flex flex-col">
             <motion.span 
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="font-subheading text-[11px] uppercase tracking-[0.2em] mb-8 block text-[#A3A3A3]"
+              className="font-subheading text-[11px] uppercase tracking-[0.2em] mb-8 block text-[#B8B8B8]"
             >
               TECHNICAL LAYER
             </motion.span>
@@ -84,7 +68,6 @@ export function Skills() {
           </div>
         </div>
 
-        {/* Certifications Row */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +83,7 @@ export function Skills() {
               className="group flex items-center gap-3 px-5 py-3.5 border border-[rgba(255,255,255,0.06)] bg-[rgba(18,18,18,0.5)] hover:border-crimson/30 transition-all duration-300 backdrop-blur-sm"
             >
               <span className="text-base opacity-70 group-hover:opacity-100 transition-opacity">🏅</span>
-              <span className="font-subheading text-[11px] tracking-wider uppercase text-[#A3A3A3] group-hover:text-white transition-colors">
+              <span className="font-subheading text-[11px] tracking-wider uppercase text-[#B8B8B8] group-hover:text-white transition-colors">
                 {cert}
               </span>
             </motion.div>

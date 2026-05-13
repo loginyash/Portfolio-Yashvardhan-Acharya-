@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { cn } from '../lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -6,6 +6,18 @@ import { Menu, X } from 'lucide-react';
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const firstFocusableRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  const handleMobileClose = useCallback(() => {
+    setMobileMenuOpen(false);
+    firstFocusableRef.current?.focus();
+  }, []);
+
+  const handleMobileOpen = useCallback(() => {
+    setMobileMenuOpen(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
@@ -13,13 +25,24 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleMobileClose = useCallback(() => {
-    setMobileMenuOpen(false);
-  }, []);
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      closeButtonRef.current?.focus();
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [mobileMenuOpen]);
 
-  const handleMobileOpen = useCallback(() => {
-    setMobileMenuOpen(true);
-  }, []);
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        handleMobileClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen, handleMobileClose]);
 
   const links = [
     { label: 'About', href: '#about' },
@@ -31,6 +54,8 @@ export function Navigation() {
 
   return (
     <nav
+      role="navigation"
+      aria-label="Main navigation"
       className={cn(
         'fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b backdrop-blur-md',
         scrolled 
@@ -39,11 +64,15 @@ export function Navigation() {
       )}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 flex justify-between items-center">
-        {/* Monogram Logo */}
-        <a href="#" className="flex items-center justify-center relative group" aria-label="Home">
+        <a 
+          href="#" 
+          className="flex items-center justify-center relative group" 
+          aria-label="Go to homepage"
+        >
           <svg 
             className="w-9 h-9 text-[#F2F2F2] group-hover:text-crimson transition-colors duration-500" 
             viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.7" strokeLinejoin="miter"
+            aria-hidden="true"
           >
             <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" stroke="currentColor" />
             <polyline points="7.5 7.5 12 11 16.5 7.5" />
@@ -53,13 +82,12 @@ export function Navigation() {
           </svg>
         </a>
 
-        {/* Desktop Links */}
         <div className="hidden md:flex items-center space-x-8">
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="relative font-subheading uppercase text-xs tracking-[0.2em] text-[#A3A3A3] hover:text-white transition-colors duration-300 group py-2"
+              className="relative font-subheading uppercase text-xs tracking-[0.2em] text-[#B8B8B8] hover:text-white transition-colors duration-300 group py-2"
             >
               {link.label}
               <span className="absolute bottom-0 left-0 w-full h-[1px] bg-crimson transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
@@ -67,17 +95,18 @@ export function Navigation() {
           ))}
         </div>
 
-        {/* Mobile menu toggle */}
         <button 
-          className="md:hidden p-2 text-[#F2F2F2] transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+          ref={firstFocusableRef}
+          className="md:hidden p-2 text-[#F2F2F2] transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center hover:text-crimson"
           onClick={handleMobileOpen}
-          aria-label="Open menu"
+          aria-label="Open navigation menu"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-menu"
         >
           <Menu size={22} />
         </button>
       </div>
 
-      {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
@@ -88,9 +117,15 @@ export function Navigation() {
               transition={{ duration: 0.3 }}
               onClick={handleMobileClose}
               className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+              aria-hidden="true"
             />
             
             <motion.div
+              ref={menuRef}
+              id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation menu"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -101,6 +136,7 @@ export function Navigation() {
                 <svg 
                   className="w-9 h-9 text-[#F2F2F2]" 
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.7" strokeLinejoin="miter"
+                  aria-hidden="true"
                 >
                   <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" />
                   <polyline points="7.5 7.5 12 11 16.5 7.5" />
@@ -109,9 +145,10 @@ export function Navigation() {
                   <line x1="9.4" y1="16" x2="14.6" y2="16" />
                 </svg>
                 <button 
+                  ref={closeButtonRef}
                   onClick={handleMobileClose} 
-                  className="text-[#F2F2F2] min-w-[44px] min-h-[44px] flex items-center justify-center"
-                  aria-label="Close menu"
+                  className="text-[#F2F2F2] min-w-[44px] min-h-[44px] flex items-center justify-center hover:text-crimson"
+                  aria-label="Close navigation menu"
                 >
                   <X size={24} />
                 </button>

@@ -1,20 +1,63 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 
+const floatingElements = [
+  { size: 4, x: '10%', y: '20%', delay: 0, duration: 8 },
+  { size: 6, x: '85%', y: '15%', delay: 1, duration: 10 },
+  { size: 3, x: '75%', y: '70%', delay: 2, duration: 9 },
+  { size: 5, x: '15%', y: '75%', delay: 1.5, duration: 11 },
+  { size: 2, x: '50%', y: '10%', delay: 0.5, duration: 7 },
+];
+
 export function Hero() {
   const { scrollY } = useScroll();
-
 
   const textParallaxY = useTransform(scrollY, [0, 800], [0, 80]);
   const textOpacity = useTransform(scrollY, [0, 600], [1, 0]);
 
   return (
     <section className="relative min-h-[100vh] w-full flex flex-col justify-center overflow-hidden">
-      {/* Subtle radial gradient accent */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.02] rounded-full blur-[120px]" />
       </div>
 
-      {/* Bottom accent line */}
+      {floatingElements.map((el, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ 
+            opacity: [0.3, 0.6, 0.3], 
+            scale: [1, 1.2, 1],
+            y: [0, -20, 0]
+          }}
+          transition={{ 
+            duration: el.duration, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: el.delay
+          }}
+          className="absolute rounded-full border border-crimson/30 pointer-events-none"
+          style={{
+            width: el.size,
+            height: el.size,
+            left: el.x,
+            top: el.y,
+          }}
+        />
+      ))}
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0.3 }}
+        className="absolute top-1/4 left-[5%] w-[1px] h-[200px] bg-gradient-to-b from-transparent via-crimson/20 to-transparent"
+      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
+        className="absolute top-1/3 right-[5%] w-[1px] h-[150px] bg-gradient-to-b from-transparent via-crimson/20 to-transparent"
+      />
+
       <div className="absolute bottom-0 left-0 w-full h-[1px] bg-crimson/40 z-20" />
 
       <motion.div 
@@ -82,15 +125,14 @@ export function Hero() {
         
         <motion.p 
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
+          animate={{ opacity: 0.6 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="font-inter italic text-[14px] md:text-[15px] text-[#A3A3A3] mt-3"
+          className="font-inter italic text-[14px] md:text-[15px] text-[#B8B8B8] mt-3"
         >
           Crafting interfaces that feel like superpowers.
         </motion.p>
       </motion.div>
 
-      {/* Scroll indicator */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
