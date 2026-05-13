@@ -16,8 +16,31 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[100vh] w-full flex flex-col justify-center overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.02] rounded-full blur-[120px]" />
+        
+        <motion.div 
+          animate={{ 
+            backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 opacity-30"
+          style={{
+            background: 'radial-gradient(circle at 20% 50%, rgba(192, 0, 29, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 30%, rgba(192, 0, 29, 0.1) 0%, transparent 40%), radial-gradient(circle at 40% 80%, rgba(192, 0, 29, 0.08) 0%, transparent 45%)',
+            backgroundSize: '200% 200%',
+          }}
+        />
+
+        <motion.div
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-20 -right-20 w-[400px] h-[400px] border border-white/[0.02] rounded-full"
+        />
+        <motion.div
+          animate={{ rotate: [0, -360] }}
+          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+          className="absolute -bottom-20 -left-20 w-[300px] h-[300px] border border-crimson/[0.03] rounded-full"
+        />
       </div>
 
       {floatingElements.map((el, i) => (
@@ -58,7 +81,12 @@ export function Hero() {
         className="absolute top-1/3 right-[5%] w-[1px] h-[150px] bg-gradient-to-b from-transparent via-crimson/20 to-transparent"
       />
 
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-crimson/40 z-20" />
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 1.5, delay: 0.2 }}
+        className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-crimson/60 to-transparent"
+      />
 
       <motion.div 
         style={{ y: textParallaxY, opacity: textOpacity }}

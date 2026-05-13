@@ -7,6 +7,7 @@ import { Navigation } from "./components/Navigation";
 import { Hero } from "./components/Hero";
 import { CustomCursor } from "./components/CustomCursor";
 import { ScrollProgress, VerticalProgress } from "./components/ScrollProgress";
+import { SectionDivider } from "./components/SectionDivider";
 
 const About = lazy(() => import("./components/About").then(m => ({ default: m.About })));
 const Work = lazy(() => import("./components/Work").then(m => ({ default: m.Work })));
@@ -139,11 +140,16 @@ function App() {
       
         <main id="main-content" className="relative z-10">
           <Hero />
+          <SectionDivider className="my-4" />
           <Suspense fallback={<LoadingSection />}>
             <About />
+            <SectionDivider className="my-4" />
             <Work />
+            <SectionDivider className="my-4" />
             <Skills />
+            <SectionDivider className="my-4" />
             <Process />
+            <SectionDivider className="my-4" />
             <Contact />
           </Suspense>
         </main>
