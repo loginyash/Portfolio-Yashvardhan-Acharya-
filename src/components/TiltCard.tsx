@@ -25,6 +25,7 @@ export function TiltCard({ children, className }: TiltCardProps) {
   const glowX = useMotionValue(0);
   const glowY = useMotionValue(0);
   const glowOpacity = useSpring(0);
+  const borderOpacity = useSpring(0);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -42,6 +43,7 @@ export function TiltCard({ children, className }: TiltCardProps) {
     glowX.set(mouseX);
     glowY.set(mouseY);
     glowOpacity.set(1);
+    borderOpacity.set(1);
     setHovering(true);
   };
 
@@ -49,6 +51,7 @@ export function TiltCard({ children, className }: TiltCardProps) {
     x.set(0);
     y.set(0);
     glowOpacity.set(0);
+    borderOpacity.set(0);
     setHovering(false);
   };
 
@@ -77,19 +80,23 @@ export function TiltCard({ children, className }: TiltCardProps) {
         {children({ rotateX, rotateY })}
       </div>
       
-      {/* Subtle glow */}
       <motion.div 
         style={{
           left: glowX,
           top: glowY,
           opacity: glowOpacity,
-          background: "radial-gradient(circle at center, rgba(192,0,29,0.12) 0%, transparent 70%)",
-          width: '250px',
-          height: '250px',
+          background: "radial-gradient(circle at center, rgba(192,0,29,0.25) 0%, transparent 70%)",
+          width: '300px',
+          height: '300px',
           translateX: '-50%',
           translateY: '-50%',
         }}
-        className="absolute pointer-events-none z-30 blur-2xl rounded-full"
+        className="absolute pointer-events-none z-30 blur-3xl rounded-full"
+      />
+
+      <motion.div
+        style={{ opacity: borderOpacity }}
+        className="absolute inset-0 rounded-lg border-2 border-crimson/60 pointer-events-none z-40"
       />
     </motion.div>
   );

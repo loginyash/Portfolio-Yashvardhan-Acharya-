@@ -1,19 +1,31 @@
+import { lazy, Suspense, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { personal } from "./config/personal";
+import { usePrefersReducedMotion } from "./hooks/useAnimations";
+
 import { Navigation } from "./components/Navigation";
 import { Hero } from "./components/Hero";
-import { About } from "./components/About";
-import { Work } from "./components/Work";
-import { Skills } from "./components/Skills";
-import { Process } from "./components/Process";
-import { Contact } from "./components/Contact";
-import { Footer } from "./components/Footer";
 import { CustomCursor } from "./components/CustomCursor";
-import { personal } from "./config/personal";
+import { ScrollProgress, VerticalProgress } from "./components/ScrollProgress";
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+const About = lazy(() => import("./components/About").then(m => ({ default: m.About })));
+const Work = lazy(() => import("./components/Work").then(m => ({ default: m.Work })));
+const Skills = lazy(() => import("./components/Skills").then(m => ({ default: m.Skills })));
+const Process = lazy(() => import("./components/Process").then(m => ({ default: m.Process })));
+const Contact = lazy(() => import("./components/Contact").then(m => ({ default: m.Contact })));
+const Footer = lazy(() => import("./components/Footer").then(m => ({ default: m.Footer })));
+
+function LoadingSection() {
+  return (
+    <div className="w-full h-[400px] flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-crimson/30 border-t-crimson rounded-full animate-spin" />
+    </div>
+  );
+}
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     const preloading = new Promise((resolve) => {
@@ -27,6 +39,24 @@ function App() {
       setIsLoading(false);
     });
   }, []);
+
+  if (prefersReducedMotion) {
+    return (
+      <div className="min-h-screen bg-[#0A0A0A] text-[#F2F2F2]">
+        <CustomCursor />
+        <Navigation />
+        <main id="main-content">
+          <Hero />
+          <About />
+          <Work />
+          <Skills />
+          <Process />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -97,6 +127,9 @@ function App() {
 
       <div className="min-h-screen bg-[#0A0A0A] text-[#F2F2F2]">
         
+        <ScrollProgress />
+        <VerticalProgress />
+
         <div className="fixed inset-0 pointer-events-none z-[100] mix-blend-overlay opacity-[0.06]">
           <div className="absolute inset-0 comic-grain" />
         </div>
@@ -106,14 +139,18 @@ function App() {
       
         <main id="main-content" className="relative z-10">
           <Hero />
-          <About />
-          <Work />
-          <Skills />
-          <Process />
-          <Contact />
+          <Suspense fallback={<LoadingSection />}>
+            <About />
+            <Work />
+            <Skills />
+            <Process />
+            <Contact />
+          </Suspense>
         </main>
 
-        <Footer />
+        <Suspense fallback={<div />}>
+          <Footer />
+        </Suspense>
       </div>
     </>
   );
