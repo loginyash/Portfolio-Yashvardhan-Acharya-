@@ -27,7 +27,7 @@ export const personal = {
     email: "yashacharya2099@gmail.com"
   },
 
-  resume: "/A YASHVARDHAN ACHARYA CV .pdf",
+  resume: "/A_Yashvardhan_Acharya_CV.pdf",
 
   stats: {
     yearsExperience: 1,

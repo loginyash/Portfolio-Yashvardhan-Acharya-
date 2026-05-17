@@ -12,7 +12,7 @@ export const projects: Project[] = [
     tag: "UI Redesign · E-Commerce · Mobile",
     description: "Redesigned the Amazon mobile app interface — simplifying navigation, improving product discovery, and creating a modern visual hierarchy with cleaner flows.",
     link: "https://www.figma.com/proto/TYagBX7zirg31Dpe6bGplh?node-id=33-3&t=yV4xo41IR39DAREo-6",
-    image: "/amazon_thumb.png"
+    image: "/Amazon_logo.jpg"
   },
   {
     title: "Sampark — Hyperlocal Social Network",
