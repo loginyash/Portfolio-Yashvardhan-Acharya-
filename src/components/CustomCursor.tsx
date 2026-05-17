@@ -45,7 +45,7 @@ export function CustomCursor() {
       dot.style.opacity = hovering ? '0' : '1';
 
       ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) scale(${hovering ? 1.8 : 1})`;
-      ring.style.borderColor = hovering ? 'rgb(192, 0, 29)' : 'rgba(255, 255, 255, 0.5)';
+      ring.style.borderColor = hovering ? 'rgb(124, 58, 237)' : 'rgba(255, 255, 255, 0.5)';
 
       rafId = requestAnimationFrame(render);
     };
