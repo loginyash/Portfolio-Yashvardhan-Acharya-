@@ -119,37 +119,33 @@ export function About() {
             transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
-            <div className="relative w-full">
+            <div className="relative w-full max-w-md">
               <motion.div 
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={isInView ? { scale: 1, opacity: 1 } : {}}
                 transition={{ delay: 0.4, duration: 0.8 }}
-                className="absolute -inset-4 bg-gradient-to-br from-violet-600/20 to-transparent rounded-2xl blur-2xl"
+                className="absolute -inset-6 bg-gradient-to-br from-violet-600/10 via-violet-500/5 to-transparent rounded-3xl blur-xl"
               />
               
-              <div className="relative group">
-                <div className="overflow-hidden rounded-2xl">
-                  <motion.img 
-                    initial={{ scale: 1.1, opacity: 0 }}
-                    animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                    transition={{ delay: 0.5, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                    src="/my_photo_about.png" 
-                    alt={personal.fullName}
-                    className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-transparent to-transparent opacity-60" />
+              <div className="relative p-8 border border-white/[0.06] rounded-2xl bg-[#0C0C0E]/50 backdrop-blur-sm">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-500/20 to-violet-600/10 border border-violet-500/20 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-subheading text-[10px] uppercase tracking-widest text-violet-400/70">Based in</p>
+                    <p className="font-display text-lg text-white/90">{personal.location.city}, {personal.location.state}</p>
+                  </div>
                 </div>
                 
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.8, duration: 0.5 }}
-                  className="absolute bottom-6 left-6 right-6 p-5 glass rounded-xl"
-                >
-                  <p className="font-subheading text-[10px] uppercase tracking-widest text-violet-400 mb-1">Based in</p>
-                  <p className="font-display text-2xl text-white">{personal.location.city}, {personal.location.state}</p>
-                </motion.div>
+                <div className="h-px bg-gradient-to-r from-violet-500/20 via-white/[0.06] to-transparent mb-6" />
+                
+                <p className="font-inter text-[15px] leading-relaxed text-white/50">
+                  Currently pursuing B.Tech in Computer Science at GEC BKN. Open to internships and full-time opportunities in UI/UX design.
+                </p>
               </div>
             </div>
           </motion.div>
