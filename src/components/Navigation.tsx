@@ -70,7 +70,7 @@ export function Navigation() {
           aria-label="Go to homepage"
         >
           <svg 
-            className="w-9 h-9 text-[#F2F2F2] group-hover:text-crimson transition-colors duration-500" 
+            className="w-9 h-9 text-[#F2F2F2] group-hover:text-violet-400 transition-colors duration-500" 
             viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.7" strokeLinejoin="miter"
             aria-hidden="true"
           >
@@ -90,7 +90,7 @@ export function Navigation() {
               className="relative font-subheading uppercase text-xs tracking-[0.2em] text-[#B8B8B8] hover:text-white transition-colors duration-300 group py-2"
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-crimson transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
+              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-violet-500 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
             </a>
           ))}
         </div>

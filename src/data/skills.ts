@@ -1,14 +1,13 @@
 export const designSkills = [
-  "Figma", "Wireframing", "High-Fidelity Prototyping", "User Flows", 
-  "Design Systems", "Responsive Design", "User Interviews", "Usability Testing"
+  "UI/UX Design", "Wireframing", "Prototyping", "User Flows",
+  "Design Systems", "Responsive Design", "Interaction Design"
 ];
 
-export const techSkills = [
-  "HTML", "CSS", "Python", "Git", "GitHub", "Product Thinking", 
-  "Cross-functional Collaboration"
+export const toolsAndPlatforms = [
+  "Figma", "Claude + Figma MCP", "Lovable",
+  "OpenCode", "Antigravity", "Google Stitch"
 ];
 
 export const certifications = [
-  "Google UX Design — Coursera, March 2026",
-  "Data Analytics Job Simulation — Deloitte/Forage, July 2025"
+  "Foundations of User Experience Design — Google/Coursera, March 2026"
 ];

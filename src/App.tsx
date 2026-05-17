@@ -6,8 +6,7 @@ import { usePrefersReducedMotion } from "./hooks/useAnimations";
 import { Navigation } from "./components/Navigation";
 import { Hero } from "./components/Hero";
 import { CustomCursor } from "./components/CustomCursor";
-import { ScrollProgress, VerticalProgress } from "./components/ScrollProgress";
-import { SectionDivider } from "./components/SectionDivider";
+import { ScrollProgress } from "./components/ScrollProgress";
 
 const About = lazy(() => import("./components/About").then(m => ({ default: m.About })));
 const Work = lazy(() => import("./components/Work").then(m => ({ default: m.Work })));
@@ -19,7 +18,7 @@ const Footer = lazy(() => import("./components/Footer").then(m => ({ default: m.
 function LoadingSection() {
   return (
     <div className="w-full h-[400px] flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-crimson/30 border-t-crimson rounded-full animate-spin" />
+      <div className="w-8 h-8 border-2 border-violet-500/30 border-t-violet-500 rounded-full animate-spin" />
     </div>
   );
 }
@@ -43,7 +42,7 @@ function App() {
 
   if (prefersReducedMotion) {
     return (
-      <div className="min-h-screen bg-[#0A0A0A] text-[#F2F2F2]">
+      <div className="min-h-screen bg-[#050507] text-[#F2F2F2]">
         <CustomCursor />
         <Navigation />
         <main id="main-content">
@@ -67,7 +66,7 @@ function App() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[100] bg-[#0A0A0A] flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[100] bg-[#050507] flex flex-col items-center justify-center"
           >
             <div className="relative flex flex-col items-center">
               <motion.div
@@ -77,7 +76,7 @@ function App() {
                 className="relative"
               >
                 <svg 
-                  className="w-16 h-16 text-crimson" 
+                  className="w-16 h-16 text-violet-500" 
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinejoin="miter"
                 >
                   <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" stroke="currentColor" />
@@ -89,7 +88,7 @@ function App() {
                 <motion.div
                   animate={{ scale: [1, 1.5, 1], opacity: [0.8, 0, 0.8] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute inset-0 bg-crimson blur-xl rounded-full"
+                  className="absolute inset-0 bg-violet-500 blur-xl rounded-full"
                 />
               </motion.div>
 
@@ -97,7 +96,7 @@ function App() {
                 initial={{ width: 0, opacity: 0 }}
                 animate={{ width: 100, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.8, ease: "easeInOut" }}
-                className="h-[2px] bg-crimson mt-8 rounded-full overflow-hidden"
+                className="h-[2px] bg-violet-500 mt-8 rounded-full overflow-hidden"
               >
                 <motion.div
                   animate={{ x: ["-100%", "200%"] }}
@@ -121,35 +120,25 @@ function App() {
 
       <a 
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[1000] focus:px-4 focus:py-2 focus:bg-crimson focus:text-white focus:text-sm focus:rounded"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[1000] focus:px-4 focus:py-2 focus:bg-violet-600 focus:text-white focus:text-sm focus:rounded"
       >
         Skip to main content
       </a>
 
-      <div className="min-h-screen bg-[#0A0A0A] text-[#F2F2F2]">
+      <div className="min-h-screen bg-[#050507] text-[#F2F2F2]">
         
         <ScrollProgress />
-        <VerticalProgress />
-
-        <div className="fixed inset-0 pointer-events-none z-[100] mix-blend-overlay opacity-[0.06]">
-          <div className="absolute inset-0 comic-grain" />
-        </div>
 
         <CustomCursor />
         <Navigation />
       
         <main id="main-content" className="relative z-10">
           <Hero />
-          <SectionDivider className="my-4" />
           <Suspense fallback={<LoadingSection />}>
             <About />
-            <SectionDivider className="my-4" />
             <Work />
-            <SectionDivider className="my-4" />
             <Skills />
-            <SectionDivider className="my-4" />
             <Process />
-            <SectionDivider className="my-4" />
             <Contact />
           </Suspense>
         </main>

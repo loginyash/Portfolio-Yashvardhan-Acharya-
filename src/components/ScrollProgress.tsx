@@ -10,7 +10,7 @@ export function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-[2px] bg-crimson z-[1000] origin-left"
+      className="fixed top-0 left-0 right-0 h-[2px] bg-violet z-[1000] origin-left"
       style={{ scaleX }}
     />
   );
@@ -27,7 +27,7 @@ export function VerticalProgress() {
   return (
     <div className="fixed right-4 top-1/2 -translate-y-1/2 w-[2px] h-[200px] bg-white/[0.05] rounded-full hidden lg:block z-50">
       <motion.div
-        className="w-full h-full bg-crimson rounded-full origin-top"
+        className="w-full h-full bg-violet rounded-full origin-top"
         style={{ scaleY }}
       />
     </div>
