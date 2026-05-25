@@ -45,7 +45,7 @@ export function CustomCursor() {
       dot.style.opacity = hovering ? '0' : '1';
 
       ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) scale(${hovering ? 1.8 : 1})`;
-      ring.style.borderColor = hovering ? 'rgb(124, 58, 237)' : 'rgba(255, 255, 255, 0.5)';
+      ring.style.borderColor = hovering ? 'rgb(217, 199, 232)' : 'rgba(0, 0, 0, 0.3)';
 
       rafId = requestAnimationFrame(render);
     };
@@ -63,12 +63,12 @@ export function CustomCursor() {
       {/* Follower ring */}
       <div 
         ref={ringRef} 
-        className="fixed top-0 left-0 w-8 h-8 -ml-4 -mt-4 rounded-full border-[1.5px] border-white/50 pointer-events-none z-[9998] hidden md:block will-change-transform transition-[border-color] duration-200"
+        className="fixed top-0 left-0 w-8 h-8 -ml-4 -mt-4 rounded-full border-[1.5px] border-black/30 pointer-events-none z-[9998] hidden md:block will-change-transform transition-[border-color] duration-200"
       />
       {/* Dot */}
       <div 
         ref={dotRef} 
-        className="fixed top-0 left-0 w-[6px] h-[6px] -ml-[3px] -mt-[3px] rounded-full bg-white pointer-events-none z-[9999] hidden md:block will-change-transform" 
+        className="fixed top-0 left-0 w-[6px] h-[6px] -ml-[3px] -mt-[3px] rounded-full bg-ink pointer-events-none z-[9999] hidden md:block will-change-transform" 
       />
     </>
   );

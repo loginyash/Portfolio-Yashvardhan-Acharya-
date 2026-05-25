@@ -18,7 +18,7 @@ const Footer = lazy(() => import("./components/Footer").then(m => ({ default: m.
 function LoadingSection() {
   return (
     <div className="w-full h-[400px] flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-violet-500/30 border-t-violet-500 rounded-full animate-spin" />
+      <div className="w-8 h-8 border-2 border-ink/20 border-t-ink rounded-full animate-spin" />
     </div>
   );
 }
@@ -28,21 +28,13 @@ function App() {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    const preloading = new Promise((resolve) => {
-      const img = new Image();
-      img.src = '/my_photo_about.png';
-      img.onload = resolve;
-      img.onerror = resolve;
-    });
-
-    preloading.then(() => {
-      setIsLoading(false);
-    });
+    const timer = setTimeout(() => setIsLoading(false), 800);
+    return () => clearTimeout(timer);
   }, []);
 
   if (prefersReducedMotion) {
     return (
-      <div className="min-h-screen bg-[#050507] text-[#F2F2F2]">
+      <div className="min-h-screen bg-[#F3F3F0] text-[#111111]">
         <CustomCursor />
         <Navigation />
         <main id="main-content">
@@ -66,7 +58,7 @@ function App() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[100] bg-[#050507] flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[100] bg-[#F3F3F0] flex flex-col items-center justify-center"
           >
             <div className="relative flex flex-col items-center">
               <motion.div
@@ -76,7 +68,7 @@ function App() {
                 className="relative"
               >
                 <svg 
-                  className="w-16 h-16 text-violet-500" 
+                  className="w-16 h-16 text-ink" 
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinejoin="miter"
                 >
                   <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" stroke="currentColor" />
@@ -88,7 +80,7 @@ function App() {
                 <motion.div
                   animate={{ scale: [1, 1.5, 1], opacity: [0.8, 0, 0.8] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute inset-0 bg-violet-500 blur-xl rounded-full"
+                  className="absolute inset-0 bg-ink blur-xl rounded-full"
                 />
               </motion.div>
 
@@ -96,12 +88,12 @@ function App() {
                 initial={{ width: 0, opacity: 0 }}
                 animate={{ width: 100, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.8, ease: "easeInOut" }}
-                className="h-[2px] bg-violet-500 mt-8 rounded-full overflow-hidden"
+                className="h-[2px] bg-ink mt-8 rounded-full overflow-hidden"
               >
                 <motion.div
                   animate={{ x: ["-100%", "200%"] }}
                   transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-                  className="h-full w-1/3 bg-white/80 blur-sm"
+                  className="h-full w-1/3 bg-ink/80 blur-sm"
                 />
               </motion.div>
 
@@ -109,7 +101,7 @@ function App() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.5 }}
-                className="font-subheading text-[10px] uppercase tracking-[0.3em] text-white/40 mt-6"
+                className="font-subheading text-[10px] uppercase tracking-[0.3em] text-ink/40 mt-6"
               >
                 {personal.fullName}
               </motion.p>
@@ -120,12 +112,12 @@ function App() {
 
       <a 
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[1000] focus:px-4 focus:py-2 focus:bg-violet-600 focus:text-white focus:text-sm focus:rounded"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[1000] focus:px-4 focus:py-2 focus:bg-ink focus:text-white focus:text-sm focus:rounded"
       >
         Skip to main content
       </a>
 
-      <div className="min-h-screen bg-[#050507] text-[#F2F2F2]">
+      <div className="min-h-screen bg-[#F3F3F0] text-[#111111]">
         
         <ScrollProgress />
 

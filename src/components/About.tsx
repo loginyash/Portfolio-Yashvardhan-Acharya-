@@ -28,7 +28,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-32 md:py-48 px-6 md:px-12 relative overflow-hidden">
+    <section id="about" className="py-32 md:py-48 px-6 md:px-12 relative overflow-hidden bg-[#F3F3F0]">
       <div ref={containerRef} className="max-w-[1440px] mx-auto relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start lg:items-center">
@@ -43,7 +43,7 @@ export function About() {
               initial={{ opacity: 0, x: -15 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="font-subheading text-[11px] uppercase tracking-[0.2em] mb-4 block text-violet-400"
+              className="font-subheading text-[11px] uppercase tracking-[0.2em] mb-4 block text-ink"
             >
               ABOUT ME
             </motion.span>
@@ -52,11 +52,11 @@ export function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="font-display text-[48px] md:text-[64px] leading-[1.1] tracking-tight mb-8 text-[#F2F2F2]"
+              className="font-display text-[48px] md:text-[64px] leading-[1.1] tracking-tight mb-8 text-ink"
             >
               Design Meets
               <br />
-              <span className="text-gradient-violet">Logic.</span>
+              <span className="text-ink">Logic.</span>
             </motion.h2>
 
             <motion.div 
@@ -65,14 +65,14 @@ export function About() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="flex items-center gap-3 mb-8"
             >
-              <div className="w-10 h-[1px] bg-violet-500" />
-              <span className="font-subheading text-[11px] tracking-[0.15em] uppercase text-white/50">
+              <div className="w-10 h-[1px] bg-ink" />
+              <span className="font-subheading text-[11px] tracking-[0.15em] uppercase text-ink/60">
                 Available for Work
               </span>
               <motion.span 
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 h-2 rounded-full bg-emerald-400"
+                className="w-2 h-2 rounded-full bg-emerald-500"
               />
             </motion.div>
             
@@ -80,18 +80,18 @@ export function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="font-inter text-[16px] md:text-[17px] leading-[1.8] max-w-lg mb-6 text-white/70"
+              className="font-inter text-[16px] md:text-[17px] leading-[1.8] max-w-lg mb-6 text-ink/70"
             >
-              I'm a <span className="text-white font-medium">UI/UX Designer & Product Thinker</span> from {personal.location.city}, {personal.location.state}. Currently pursuing B.Tech in Computer Science at GEC Bikaner.
+              I'm a <span className="text-ink font-medium">UI/UX Designer & Product Thinker</span> from {personal.location.city}, {personal.location.state}. Currently pursuing B.Tech in Computer Science at GEC Bikaner.
             </motion.p>
 
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="font-inter text-[15px] md:text-[16px] leading-[1.7] max-w-lg mb-10 text-white/50"
+              className="font-inter text-[15px] md:text-[16px] leading-[1.7] max-w-lg mb-10 text-ink/50"
             >
-              I design digital experiences that don't just look good — they solve real problems. My background in both design and code means I think in <span className="text-violet-400">systems</span>, not just screens.
+              I design digital experiences that don't just look good — they solve real problems. My background in both design and code means I think in <span className="text-ink/80 font-medium">systems</span>, not just screens.
             </motion.p>
 
             <motion.div 
@@ -102,10 +102,10 @@ export function About() {
             >
               {stats.map((stat, i) => (
                 <div key={i} className="flex flex-col">
-                  <span className="font-display text-5xl md:text-6xl text-white">
+                  <span className="font-display text-5xl md:text-6xl text-ink">
                     <CountUp to={stat.to} />{stat.suffix}
                   </span>
-                  <span className="font-subheading text-[10px] uppercase tracking-wider text-white/40 mt-1 whitespace-pre-line">
+                  <span className="font-subheading text-[10px] uppercase tracking-wider text-ink/40 mt-1 whitespace-pre-line">
                     {stat.label}
                   </span>
                 </div>
@@ -120,30 +120,23 @@ export function About() {
             className="relative"
           >
             <div className="relative w-full max-w-md">
-              <motion.div 
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                transition={{ delay: 0.4, duration: 0.8 }}
-                className="absolute -inset-6 bg-gradient-to-br from-violet-600/10 via-violet-500/5 to-transparent rounded-3xl blur-xl"
-              />
-              
-              <div className="relative p-8 border border-white/[0.06] rounded-2xl bg-[#0C0C0E]/50 backdrop-blur-sm">
+              <div className="relative p-8 border border-black/[0.06] rounded-none bg-white/60 light-glass">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-500/20 to-violet-600/10 border border-violet-500/20 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-12 h-12 rounded-full bg-lavender/30 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
                   <div>
-                    <p className="font-subheading text-[10px] uppercase tracking-widest text-violet-400/70">Based in</p>
-                    <p className="font-display text-lg text-white/90">{personal.location.city}, {personal.location.state}</p>
+                    <p className="font-subheading text-[10px] uppercase tracking-widest text-ink/50">Based in</p>
+                    <p className="font-display text-lg text-ink">{personal.location.city}, {personal.location.state}</p>
                   </div>
                 </div>
                 
-                <div className="h-px bg-gradient-to-r from-violet-500/20 via-white/[0.06] to-transparent mb-6" />
+                <div className="h-px bg-black/10 mb-6" />
                 
-                <p className="font-inter text-[15px] leading-relaxed text-white/50">
+                <p className="font-inter text-[15px] leading-relaxed text-ink/60">
                   Currently pursuing B.Tech in Computer Science at GEC BKN. Open to internships and full-time opportunities in UI/UX design.
                 </p>
               </div>

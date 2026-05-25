@@ -57,9 +57,9 @@ export function Navigation() {
       role="navigation"
       aria-label="Main navigation"
       className={cn(
-        'fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b backdrop-blur-md',
+        'fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b',
         scrolled 
-          ? 'py-3 bg-[rgba(10,10,10,0.92)] border-[rgba(255,255,255,0.06)]' 
+          ? 'py-3 bg-[rgba(243,243,240,0.92)] backdrop-blur-md border-[rgba(0,0,0,0.08)]' 
           : 'py-5 bg-transparent border-transparent'
       )}
     >
@@ -70,7 +70,7 @@ export function Navigation() {
           aria-label="Go to homepage"
         >
           <svg 
-            className="w-9 h-9 text-[#F2F2F2] group-hover:text-violet-400 transition-colors duration-500" 
+            className="w-9 h-9 text-ink group-hover:text-lavender transition-colors duration-500" 
             viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.7" strokeLinejoin="miter"
             aria-hidden="true"
           >
@@ -87,17 +87,17 @@ export function Navigation() {
             <a
               key={link.label}
               href={link.href}
-              className="relative font-subheading uppercase text-xs tracking-[0.2em] text-[#B8B8B8] hover:text-white transition-colors duration-300 group py-2"
+              className="relative font-subheading uppercase text-xs tracking-[0.2em] text-ink/70 hover:text-ink transition-colors duration-300 group py-2"
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-violet-500 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
+              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-ink transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
             </a>
           ))}
         </div>
 
         <button 
           ref={firstFocusableRef}
-          className="md:hidden p-2 text-[#F2F2F2] transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center hover:text-crimson"
+          className="md:hidden p-2 text-ink transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center hover:text-lavender"
           onClick={handleMobileOpen}
           aria-label="Open navigation menu"
           aria-expanded={mobileMenuOpen}
@@ -116,7 +116,7 @@ export function Navigation() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={handleMobileClose}
-              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+              className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm"
               aria-hidden="true"
             />
             
@@ -130,11 +130,11 @@ export function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed inset-y-0 right-0 w-[80%] max-w-[320px] z-50 bg-[#0A0A0A] flex flex-col p-8"
+              className="fixed inset-y-0 right-0 w-[80%] max-w-[320px] z-50 bg-[#F3F3F0] flex flex-col p-8"
             >
               <div className="flex justify-between items-center mb-16">
                 <svg 
-                  className="w-9 h-9 text-[#F2F2F2]" 
+                  className="w-9 h-9 text-ink" 
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.7" strokeLinejoin="miter"
                   aria-hidden="true"
                 >
@@ -147,7 +147,7 @@ export function Navigation() {
                 <button 
                   ref={closeButtonRef}
                   onClick={handleMobileClose} 
-                  className="text-[#F2F2F2] min-w-[44px] min-h-[44px] flex items-center justify-center hover:text-crimson"
+                  className="text-ink min-w-[44px] min-h-[44px] flex items-center justify-center hover:text-lavender"
                   aria-label="Close navigation menu"
                 >
                   <X size={24} />
@@ -163,7 +163,7 @@ export function Navigation() {
                     key={link.label}
                     href={link.href}
                     onClick={handleMobileClose}
-                    className="font-display text-3xl text-[#F2F2F2] uppercase tracking-wider hover:text-crimson transition-colors"
+                    className="font-display text-3xl text-ink uppercase tracking-wider hover:text-lavender transition-colors"
                   >
                     {link.label}
                   </motion.a>

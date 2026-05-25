@@ -28,7 +28,7 @@ const processSteps = [
     desc: "From wireframes to pixel-perfect prototypes in Figma.",
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42-3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
       </svg>
     )
   },
@@ -53,18 +53,14 @@ export function Process() {
   });
 
   return (
-    <section id="process" ref={containerRef} className="py-32 md:py-48 px-6 md:px-12 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-1/4 w-1/2 h-[500px] bg-gradient-to-t from-violet-600/5 to-transparent blur-[100px]" />
-      </div>
-
+    <section id="process" ref={containerRef} className="py-32 md:py-48 px-6 md:px-12 relative overflow-hidden bg-[#F3F3F0]">
       <div className="max-w-[1440px] mx-auto relative z-10">
         
         <motion.span 
           initial={{ opacity: 0, x: -15 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="font-subheading text-[11px] uppercase tracking-[0.2em] mb-4 block text-violet-400"
+          className="font-subheading text-[11px] uppercase tracking-[0.2em] mb-4 block text-ink"
         >
           MY PROCESS
         </motion.span>
@@ -74,7 +70,7 @@ export function Process() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1, duration: 0.6 }}
-          className="font-display text-[48px] md:text-[64px] leading-[1.1] tracking-tight mb-16 text-[#F2F2F2]"
+          className="font-display text-[48px] md:text-[64px] leading-[1.1] tracking-tight mb-16 text-ink"
         >
           The Framework.
         </motion.h2>
@@ -91,7 +87,7 @@ export function Process() {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="h-[1px] bg-gradient-to-r from-transparent via-violet-500/30 to-transparent origin-center"
+              className="h-[1px] bg-gradient-to-r from-transparent via-black/30 to-transparent origin-center"
             />
           </div>
           
@@ -109,21 +105,21 @@ export function Process() {
                   <div className="relative">
                     <motion.div 
                       whileHover={{ scale: 1.1 }}
-                      className="w-14 h-14 rounded-2xl bg-[#0F0F18] border border-white/[0.06] flex items-center justify-center text-violet-400 group-hover:border-violet-500/30 group-hover:bg-violet-600/10 transition-all duration-500"
+                      className="w-14 h-14 bg-white/60 border border-black/[0.06] flex items-center justify-center text-ink group-hover:border-ink/30 group-hover:bg-lavender/20 transition-all duration-500"
                     >
                       {step.icon}
                     </motion.div>
                   </div>
 
                   <div className="flex-1 lg:flex-none lg:text-center">
-                    <span className="font-display text-[12px] text-violet-500 mb-2 block">{step.num}</span>
+                    <span className="font-display text-[12px] text-ink mb-2 block">{step.num}</span>
                     <motion.h3 
                       whileHover={{ x: 4 }}
-                      className="font-display text-2xl md:text-3xl tracking-wide mb-3 text-white"
+                      className="font-display text-2xl md:text-3xl tracking-wide mb-3 text-ink"
                     >
                       {step.title}
                     </motion.h3>
-                    <p className="font-inter text-[14px] leading-relaxed text-white/50 max-w-sm">
+                    <p className="font-inter text-[14px] leading-relaxed text-ink/60 max-w-sm">
                       {step.desc}
                     </p>
                   </div>
