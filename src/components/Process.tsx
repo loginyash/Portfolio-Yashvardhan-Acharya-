@@ -53,7 +53,7 @@ export function Process() {
   });
 
   return (
-    <section id="process" ref={containerRef} className="py-32 md:py-48 px-6 md:px-12 relative overflow-hidden bg-[#F3F3F0]">
+    <section id="process" ref={containerRef} className="py-32 md:py-48 px-6 md:px-12 relative overflow-hidden bg-background">
       <div className="max-w-[1440px] mx-auto relative z-10">
         
         <motion.span 
@@ -87,7 +87,7 @@ export function Process() {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="h-[1px] bg-gradient-to-r from-transparent via-black/30 to-transparent origin-center"
+              className="h-[1px] bg-gradient-to-r from-transparent via-[#8FAF9B]/30 to-transparent origin-center"
             />
           </div>
           
@@ -101,11 +101,11 @@ export function Process() {
                 transition={{ delay: i * 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 className="flex flex-col"
               >
-                <div className="flex lg:flex-col items-start gap-6">
+                <div className="flex lg:flex-col items-start lg:items-center gap-6">
                   <div className="relative">
                     <motion.div 
                       whileHover={{ scale: 1.1 }}
-                      className="w-14 h-14 bg-white/60 border border-black/[0.06] flex items-center justify-center text-ink group-hover:border-ink/30 group-hover:bg-lavender/20 transition-all duration-500"
+                      className="w-14 h-14 bg-white/70 border border-[#8FAF9B]/20 rounded-xl flex items-center justify-center text-ink hover:border-[#8FAF9B]/40 hover:bg-[#8FAF9B]/5 transition-all duration-500 shadow-sm"
                     >
                       {step.icon}
                     </motion.div>

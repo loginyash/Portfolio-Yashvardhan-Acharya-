@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# API Keys and Secrets
+AIMLAPI_APIkey_06bc3ffc.txt
+

@@ -4,7 +4,7 @@ import { Download } from 'lucide-react';
 
 export function Contact() {
   return (
-    <section id="contact" className="py-32 md:py-48 px-6 md:px-12 relative flex items-center justify-center min-h-[60vh] overflow-hidden bg-[#F3F3F0]">
+    <section id="contact" className="py-32 md:py-48 px-6 md:px-12 relative flex items-center justify-center min-h-[60vh] overflow-hidden bg-background">
       <div className="max-w-[1440px] w-full mx-auto text-center relative z-10 flex flex-col items-center">
 
         <motion.span
@@ -50,17 +50,17 @@ export function Contact() {
             href={personal.contact.mailto}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative w-full sm:w-auto px-8 py-4 overflow-hidden border border-ink text-ink font-subheading text-[11px] font-bold uppercase tracking-[0.25em] transition-all duration-500 active:scale-95 text-center min-h-[48px] flex items-center justify-center"
+            className="group relative w-full sm:w-auto px-8 py-4 overflow-hidden border border-[#1F2933] text-[#1F2933] font-subheading text-[11px] font-bold uppercase tracking-[0.25em] transition-all duration-500 active:scale-95 text-center min-h-[48px] flex items-center justify-center rounded-xl"
           >
             <span className="relative z-10 group-hover:text-white transition-colors duration-300">Email Me</span>
-            <div className="absolute inset-0 bg-ink translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]" />
+            <div className="absolute inset-0 bg-[#8FAF9B] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]" />
           </a>
 
           <a
             href={personal.social.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="group w-full sm:w-auto px-8 py-4 bg-transparent border border-black/10 text-ink font-subheading text-[11px] font-medium uppercase tracking-[0.25em] transition-all duration-500 hover:border-ink/50 hover:text-ink active:scale-95 text-center min-h-[48px] flex items-center justify-center gap-2"
+            className="group w-full sm:w-auto px-8 py-4 bg-transparent border border-[#1F2933]/15 text-[#1F2933] font-subheading text-[11px] font-medium uppercase tracking-[0.25em] transition-all duration-500 hover:border-[#8FAF9B] hover:bg-[#8FAF9B]/5 active:scale-95 text-center min-h-[48px] flex items-center justify-center rounded-xl gap-2"
           >
             <span>LinkedIn</span>
           </a>
@@ -69,10 +69,13 @@ export function Contact() {
             href={personal.resume}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative w-full sm:w-auto px-8 py-4 border-2 border-ink bg-transparent text-ink font-subheading text-[11px] font-bold uppercase tracking-[0.25em] transition-all duration-500 hover:bg-ink hover:text-white active:scale-95 text-center min-h-[48px] flex items-center justify-center gap-2"
+            className="group relative w-full sm:w-auto px-8 py-4 overflow-hidden border border-[#1F2933] bg-transparent text-[#1F2933] font-subheading text-[11px] font-bold uppercase tracking-[0.25em] transition-all duration-500 active:scale-95 text-center min-h-[48px] flex items-center justify-center rounded-xl"
           >
-            <Download size={14} className="group-hover:-translate-y-1 transition-all duration-300" />
-            <span>Resume</span>
+            <span className="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-300">
+              <Download size={14} className="group-hover:-translate-y-0.5 transition-all duration-300" />
+              Resume
+            </span>
+            <div className="absolute inset-0 bg-[#8FAF9B] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]" />
           </a>
         </motion.div>
 

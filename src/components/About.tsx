@@ -28,7 +28,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-32 md:py-48 px-6 md:px-12 relative overflow-hidden bg-[#F3F3F0]">
+    <section id="about" className="py-32 md:py-48 px-6 md:px-12 relative overflow-hidden bg-background">
       <div ref={containerRef} className="max-w-[1440px] mx-auto relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start lg:items-center">
@@ -120,9 +120,9 @@ export function About() {
             className="relative"
           >
             <div className="relative w-full max-w-md">
-              <div className="relative p-8 border border-black/[0.06] rounded-none bg-white/60 light-glass">
+              <div className="relative p-8 border border-[#8FAF9B]/20 rounded-2xl bg-white/70 shadow-sm hover:border-[#8FAF9B]/40 hover:shadow-lg transition-all duration-500">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-lavender/30 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-sage/15 flex items-center justify-center border border-sage/25">
                     <svg className="w-5 h-5 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -134,7 +134,7 @@ export function About() {
                   </div>
                 </div>
                 
-                <div className="h-px bg-black/10 mb-6" />
+                <div className="h-px bg-sage/10 mb-6" />
                 
                 <p className="font-inter text-[15px] leading-relaxed text-ink/60">
                   Currently pursuing B.Tech in Computer Science at GEC BKN. Open to internships and full-time opportunities in UI/UX design.

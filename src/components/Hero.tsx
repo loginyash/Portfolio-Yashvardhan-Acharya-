@@ -6,8 +6,8 @@ export function Hero() {
   const textOpacity = useTransform(scrollY, [0, 600], [1, 0]);
 
   return (
-    <section className="relative min-h-[100vh] w-full flex flex-col justify-center overflow-hidden bg-[#F3F3F0]">
-      <div className="absolute inset-0 pointer-events-none opacity-30" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+    <section className="relative min-h-[100vh] w-full flex flex-col justify-center overflow-hidden bg-background">
+      <div className="absolute inset-0 pointer-events-none opacity-30" style={{ backgroundImage: 'linear-gradient(rgba(143,175,155,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(143,175,155,0.12) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
 
       <motion.div
         initial={{ scaleX: 0 }}
@@ -34,13 +34,13 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-display text-[56px] md:text-[110px] lg:text-[140px] leading-[0.85] tracking-[-0.03em] select-none uppercase"
+            className="font-display text-[clamp(2.2rem,11.5vw,4.5rem)] md:text-[110px] lg:text-[140px] leading-[0.85] tracking-[-0.03em] select-none uppercase"
           >
-            <span className="relative z-10 block">
+            <span className="relative z-10 block whitespace-nowrap">
               {"YASHVARDHAN".split('').map((letter, i) => (
                 <motion.span 
                   key={i}
-                  whileHover={{ color: '#D9C7E8', y: -8 }}
+                  whileHover={{ color: '#8FAF9B', y: -8 }}
                   transition={{ duration: 0.2 }}
                   className="inline-block text-ink"
                 >
@@ -48,7 +48,7 @@ export function Hero() {
                 </motion.span>
               ))}
             </span>
-            <span className="relative block mt-2 md:mt-4">
+            <span className="relative block mt-2 md:mt-4 whitespace-nowrap">
               <span className="text-ink">ACHARYA</span>
               
               <motion.div 
@@ -67,7 +67,7 @@ export function Hero() {
           transition={{ delay: 0.5, duration: 0.6 }}
           className="mt-10 md:mt-14 font-subheading font-medium text-[16px] md:text-[18px]"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-lavender text-ink text-[13px] md:text-[15px] font-medium mr-3">UI/UX Designer</span>
+          <span className="inline-block px-4 py-1.5 rounded-full bg-sage/10 border border-sage/30 text-ink text-[13px] md:text-[15px] font-medium mr-3">UI/UX Designer</span>
           <span className="text-ink/40 mx-2">·</span>
           <span className="text-ink/60">Product Thinker</span>
         </motion.p>

@@ -15,16 +15,16 @@ export const personal = {
   },
 
   contact: {
-    email: "yashacharya2099@gmail.com",
+    email: "loginyash.work@gmail.com",
     phone: "+91-99282 83468",
-    mailto: "mailto:yashacharya2099@gmail.com"
+    mailto: "mailto:loginyash.work@gmail.com"
   },
 
   social: {
     linkedin: "https://www.linkedin.com/in/loginyash/",
     github: "https://github.com/loginyash",
     behance: "https://www.behance.net/loginyash",
-    email: "yashacharya2099@gmail.com"
+    email: "loginyash.work@gmail.com"
   },
 
   resume: "https://drive.google.com/file/d/1NpIqMwwKsv3m4hmMDSd1eLe6mO1TPvwq/view?usp=sharing",

@@ -11,7 +11,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="w-full border-t border-black/[0.08] bg-[#F3F3F0] py-8 px-6 md:px-12">
+    <footer className="w-full border-t border-[#8FAF9B]/20 bg-background py-8 px-6 md:px-12">
       <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-4">
           <svg className="w-5 h-5 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="miter">
@@ -33,7 +33,7 @@ export function Footer() {
               href={link.href}
               target={link.href.startsWith('mailto') ? undefined : "_blank"}
               rel={link.href.startsWith('mailto') ? undefined : "noopener noreferrer"}
-              className="text-ink hover:text-lavender transition-colors font-subheading text-[11px] uppercase tracking-widest"
+              className="text-ink hover:text-sage transition-colors font-subheading text-[11px] uppercase tracking-widest"
             >
               {link.label}
             </a>

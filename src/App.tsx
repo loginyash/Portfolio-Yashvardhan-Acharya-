@@ -14,6 +14,7 @@ const Skills = lazy(() => import("./components/Skills").then(m => ({ default: m.
 const Process = lazy(() => import("./components/Process").then(m => ({ default: m.Process })));
 const Contact = lazy(() => import("./components/Contact").then(m => ({ default: m.Contact })));
 const Footer = lazy(() => import("./components/Footer").then(m => ({ default: m.Footer })));
+const CaseStudyDetail = lazy(() => import("./components/CaseStudyDetail").then(m => ({ default: m.CaseStudyDetail })));
 
 function LoadingSection() {
   return (
@@ -25,6 +26,7 @@ function LoadingSection() {
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [activeCaseStudy, setActiveCaseStudy] = useState<string | null>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -34,17 +36,20 @@ function App() {
 
   if (prefersReducedMotion) {
     return (
-      <div className="min-h-screen bg-[#F3F3F0] text-[#111111]">
+      <div className="min-h-screen bg-background text-ink">
         <CustomCursor />
         <Navigation />
         <main id="main-content">
           <Hero />
           <About />
-          <Work />
+          <Work onSelectProject={setActiveCaseStudy} />
           <Skills />
           <Process />
           <Contact />
         </main>
+        <Suspense fallback={<div />}>
+          <CaseStudyDetail slug={activeCaseStudy} onClose={() => setActiveCaseStudy(null)} />
+        </Suspense>
         <Footer />
       </div>
     );
@@ -58,7 +63,7 @@ function App() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[100] bg-[#F3F3F0] flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center"
           >
             <div className="relative flex flex-col items-center">
               <motion.div
@@ -117,7 +122,7 @@ function App() {
         Skip to main content
       </a>
 
-      <div className="min-h-screen bg-[#F3F3F0] text-[#111111]">
+      <div className="min-h-screen bg-background text-ink">
         
         <ScrollProgress />
 
@@ -128,7 +133,7 @@ function App() {
           <Hero />
           <Suspense fallback={<LoadingSection />}>
             <About />
-            <Work />
+            <Work onSelectProject={setActiveCaseStudy} />
             <Skills />
             <Process />
             <Contact />
@@ -138,6 +143,14 @@ function App() {
         <Suspense fallback={<div />}>
           <Footer />
         </Suspense>
+
+        <AnimatePresence>
+          {activeCaseStudy && (
+            <Suspense fallback={<div />}>
+              <CaseStudyDetail slug={activeCaseStudy} onClose={() => setActiveCaseStudy(null)} />
+            </Suspense>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );
